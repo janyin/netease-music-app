@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <top></top>
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-    import top from './components/top.vue'
+    import top from './components/top/top.vue'
     export default {
         name: 'App',
         components: {

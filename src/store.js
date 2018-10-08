@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+      hotWord:[],
       top:[
           {
               title:'可不可以',

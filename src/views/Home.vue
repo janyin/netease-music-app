@@ -3,16 +3,24 @@
         <h2 class="remd">推荐歌单</h2>
         <list></list>
         <h2 class="remd">最新音乐</h2>
-        <song v-for="item in songs" :key="item.rank" :music="item"></song>
+        <div>
+            <section v-if="error">
+                <h1>加载失败</h1>
+            </section>
+            <section v-else>
+                <div v-if="loading">loading</div>
+                <song v-else v-for="item in data" :key="item.id" :music="item"></song>
+            </section>
+        </div>
         <foot></foot>
     </div>
 </template>
 
 <script>
-    import list from '@/components/list.vue'
-    import song from '@/components/song.vue'
-    import foot from '@/components/foot.vue'
-    import { mapState } from 'vuex'
+    import list from '@/components/list/list.vue'
+    import song from '@/components/song/song.vue'
+    import foot from '@/components/foot/foot.vue'
+    import {getNewSong} from '@/api/common'
     export default {
         name: 'home',
         components: {
@@ -22,18 +30,44 @@
         },
         data () {
             return{
-
+                loading: true,
+                data: [],
+                error: false
             }
         },
-        computed: mapState({
-            songs: state => state.last
-        })
+        mounted() {
+            getNewSong().then(res => {
+                    let result = [];
+                    let song = res.data.result;
+                    song.forEach(function (ele) {
+                        let artistsName = '';
+                        if(ele.song.artists.length>=2) {
+                            artistsName = ele.song.artists[0].name + '/' +
+                                ele.song.artists[1].name;
+                        }else {
+                            artistsName = ele.song.artists[0].name;
+                        }
+                        let obj = {
+                            id: ele.id,
+                            title: ele.name,
+                            artists: artistsName,
+                            album: ele.song.album.name
+                        };
+                        result.push(obj);
+                    });
+                    if(result.length) {
+                        this.data = result;
+                        this.loading = false;
+                    }else {
+                        this.error = true;
+                    }
+                })
+        }
     }
 </script>
 
 <style>
     .content {
-        width: 100%;
         height: 100%;
         padding-top: 20px;
     }

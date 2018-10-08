@@ -18,7 +18,6 @@ export default new Router({
         component: rank
     }, {
         path: '/search',
-        name: 'search',
         component: search
     }, {
         path: '/vue',

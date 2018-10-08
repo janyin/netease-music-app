@@ -4,17 +4,25 @@
             <div class="hot-flex">
                 <div class="hot-icon"></div>
                 <div class="hot-time">
-                    更新日期：09月27日
+                    更新日期：10月04日
                 </div>
             </div>
         </div>
-        <song v-for="item in songs" :key="item.rank" :music="item"></song>
+        <div>
+            <section v-if="error">
+                <h1>加载失败！</h1>
+            </section>
+            <section v-else>
+                <div v-if="loading">loading...</div>
+                <song v-else v-for="item in data" :key="item.rank" :music="item"></song>
+            </section>
+        </div>
     </div>
 </template>
 
 <script>
-    import song from '@/components/song.vue'
-    import { mapState } from 'vuex'
+    import song from '@/components/song/song.vue'
+    import {getRank} from '@/api/common'
     export default {
         name: 'rank',
         components: {
@@ -22,12 +30,47 @@
         },
         data () {
             return{
-
+                loading: true,
+                data: [],
+                error: false,
+                time: ''
             }
         },
-        computed: mapState({
-            songs: state => state.top
-        })
+        mounted() {
+            getRank().then(res => {
+                let result = [];
+                let song = res.data.playlist.tracks.slice(0,20);
+                song.forEach(function (ele,index) {
+                    let artistsName = '';
+                    if(ele.ar.length>=2) {
+                        artistsName = ele.ar[0].name + '/' + ele.ar[1].name;
+                    }else {
+                        artistsName = ele.ar[0].name;
+                    }
+                    let obj = {
+                        id: ele.dt,
+                        title: ele.name,
+                        alias: ele.alia[0],
+                        artists: artistsName,
+                        album: ele.al.name,
+                        rank: index+1
+                    };
+                    if(index<=2){
+                        obj.color=true;
+                    }
+                    if(index<=8){
+                        obj.rank='0'+obj.rank;
+                    }
+                    result.push(obj);
+                });
+                if(result.length) {
+                    this.data = result;
+                    this.loading = false;
+                }else {
+                    this.error = true;
+                }
+            })
+        }
     }
 </script>
 
