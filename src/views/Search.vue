@@ -22,7 +22,7 @@
     import {XInput} from 'vux'
     import words from '@/components/find/words.vue'
     import song from '@/components/song/song.vue'
-    import {getSong} from '@/api/common'
+    import { mapActions } from 'vuex'
 
     export default {
         name: 'search',
@@ -41,35 +41,19 @@
             song
         },
         methods: {
+            ...mapActions([
+                'getSearch'
+            ]),
             search: function (value) {
-                this.sword=value;
-                this.isWord = false;
-                const word = value.trim();
-                getSong(word).then(res => {
-                    let result = [];
-                    let song = res.data.result.songs;
-                    song.forEach(function (ele) {
-                        let artistsName = '';
-                        if(ele.artists.length>=2) {
-                            artistsName = ele.artists[0].name + '/' + ele.artists[1].name;
-                        }else {
-                            artistsName = ele.artists[0].name;
-                        }
-                        let obj = {
-                            id: ele.id,
-                            title: ele.name,
-                            alias: ele.alias[0],
-                            artists: artistsName,
-                            album: ele.album.name
-                        };
-                        result.push(obj);
-                    });
-                    if(result.length) {
-                        this.data = result;
-                        this.loading = false;
-                    }else {
-                        this.error = true;
-                    }
+                this.getSearch(value).then(() => {
+                    this.sword=value;
+                    this.isWord = false;
+                    this.data = this.$store.getters.searchResult;
+                    this.loading = false;
+                }).catch(() => {
+                    this.sword=value;
+                    this.isWord = false;
+                    this.error = true;
                 })
             },
             clear: function () {

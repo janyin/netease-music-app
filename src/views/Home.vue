@@ -20,7 +20,7 @@
     import list from '@/components/list/list.vue'
     import song from '@/components/song/song.vue'
     import foot from '@/components/foot/foot.vue'
-    import {getNewSong} from '@/api/common'
+    import { mapActions } from 'vuex'
     export default {
         name: 'home',
         components: {
@@ -35,33 +35,18 @@
                 error: false
             }
         },
-        mounted() {
-            getNewSong().then(res => {
-                    let result = [];
-                    let song = res.data.result;
-                    song.forEach(function (ele) {
-                        let artistsName = '';
-                        if(ele.song.artists.length>=2) {
-                            artistsName = ele.song.artists[0].name + '/' +
-                                ele.song.artists[1].name;
-                        }else {
-                            artistsName = ele.song.artists[0].name;
-                        }
-                        let obj = {
-                            id: ele.id,
-                            title: ele.name,
-                            artists: artistsName,
-                            album: ele.song.album.name
-                        };
-                        result.push(obj);
-                    });
-                    if(result.length) {
-                        this.data = result;
-                        this.loading = false;
-                    }else {
-                        this.error = true;
-                    }
-                })
+        methods: {
+            ...mapActions([
+                'newSong'
+            ])
+        },
+        created () {
+            this.newSong().then(() => {
+                this.loading = false;
+                this.data = this.$store.getters.newSong;
+            }).catch(() => {
+                this.error = true;
+            })
         }
     }
 </script>

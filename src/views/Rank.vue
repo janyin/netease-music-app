@@ -4,7 +4,7 @@
             <div class="hot-flex">
                 <div class="hot-icon"></div>
                 <div class="hot-time">
-                    更新日期：10月04日
+                    更新日期：10月11日
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
 <script>
     import song from '@/components/song/song.vue'
-    import {getRank} from '@/api/common'
+    import { mapActions } from 'vuex'
     export default {
         name: 'rank',
         components: {
@@ -36,39 +36,17 @@
                 time: ''
             }
         },
-        mounted() {
-            getRank().then(res => {
-                let result = [];
-                let song = res.data.playlist.tracks.slice(0,20);
-                song.forEach(function (ele,index) {
-                    let artistsName = '';
-                    if(ele.ar.length>=2) {
-                        artistsName = ele.ar[0].name + '/' + ele.ar[1].name;
-                    }else {
-                        artistsName = ele.ar[0].name;
-                    }
-                    let obj = {
-                        id: ele.dt,
-                        title: ele.name,
-                        alias: ele.alia[0],
-                        artists: artistsName,
-                        album: ele.al.name,
-                        rank: index+1
-                    };
-                    if(index<=2){
-                        obj.color=true;
-                    }
-                    if(index<=8){
-                        obj.rank='0'+obj.rank;
-                    }
-                    result.push(obj);
-                });
-                if(result.length) {
-                    this.data = result;
-                    this.loading = false;
-                }else {
-                    this.error = true;
-                }
+        methods: {
+            ...mapActions([
+                'Rank'
+            ])
+        },
+        created () {
+            this.Rank().then(() => {
+                this.loading = false;
+                this.data = this.$store.getters.rank;
+            }).catch(() => {
+                this.error = true;
             })
         }
     }

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import {getRemd} from '@/api/common'
+    import { mapActions } from 'vuex'
     export default {
         name: 'list',
         data () {
@@ -22,28 +22,16 @@
                 error: false
             }
         },
-        mounted() {
-            getRemd().then(res => {
-                let result = [];
-                let song = res.data.result.slice(0,6);
-                song.forEach(function (ele){
-                    let obj = {
-                        name: ele.name,
-                        imgUrl: ele.picUrl
-                    };
-                    let temp=parseInt(ele.playCount)+'';
-                    if(temp.length>=6){
-                        obj.play=temp[0]+temp[1]+'万';
-                    }else {
-                        obj.play=temp;
-                    }
-                    result.push(obj);
-                });
-                if(result.length) {
-                    this.data = result;
-                }else {
-                    this.error = true;
-                }
+        methods: {
+            ...mapActions([
+                'songList'
+            ])
+        },
+        created () {
+            this.songList().then(() => {
+                this.data = this.$store.getters.remdList;
+            }).catch(() => {
+                this.error = true;
             })
         }
     }

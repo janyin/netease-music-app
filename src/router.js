@@ -1,27 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from './views/Home.vue'
-import rank from './views/Rank.vue'
-import search from './views/Search.vue'
 
 Vue.use(Router)
+
+const getComponent = (name) => () => import(`./views/${name}.vue`); //路由懒加载
 
 export default new Router({
     mode: 'history',
     routes: [{
         path: '/',
-        name: 'test',
-        component: home
+        name: '首页推荐',
+        alias: '/vue',
+        component: getComponent('Home')
     }, {
         path: '/rank',
-        name: 'rank',
-        component: rank
+        name: '排行榜',
+        component: getComponent('Rank')
     }, {
         path: '/search',
-        component: search
-    }, {
-        path: '/vue',
-        name: 'home',
-        component: home
+        name: '搜索',
+        component: getComponent('Search')
     }]
 })

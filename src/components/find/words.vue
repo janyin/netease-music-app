@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import {getWord} from '@/api/common'
+    import { mapActions } from 'vuex'
     export default {
         name: 'words',
         data () {
@@ -19,9 +19,14 @@
                 list: []
             }
         },
-        mounted() {
-            getWord().then(res => {
-                this.list = res.data.result.hots;
+        methods: {
+            ...mapActions([
+                'hotWord'
+            ])
+        },
+        created () {
+            this.hotWord().then(() => {
+                this.list = this.$store.getters.hotWord;
             })
         }
     }

@@ -6,7 +6,7 @@ export function getWord() {
     return axios.get(url)
 }
 
-export function getSong(word) {
+export function getSearchSong(word) {
     const url = HOST + `/search?keywords=${word}`;
     return axios.get(url)
 }
