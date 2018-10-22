@@ -2,7 +2,7 @@
     display: inline-block;
     width: 22px;
     height: 22px;
-    background: url("../../assets/hot_icon.png") no-repeat;
+    background: url("../assets/hot_icon.png") no-repeat;
     background-position: -24px 0;
     background-size: 166px 97px;
 }
@@ -22,7 +22,7 @@
     width: 12px;
     height: 8px;
     margin-right: 4px;
-    background: url("../../assets/hot_icon.png") no-repeat;
+    background: url("../assets/hot_icon.png") no-repeat;
     background-size: 166px 97px;
 }
 .song-detail{

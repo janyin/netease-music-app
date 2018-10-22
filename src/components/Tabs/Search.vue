@@ -1,18 +1,18 @@
 <template>
     <div>
         <div class="search">
-            <img class="find" src="../assets/find.svg" alt="find">
-            <x-input placeholder="搜索歌曲、歌手、专辑" v-model="sword" @on-enter="search" @on-click-clear-icon="clear" @on-change="change">
+            <img class="find" src="../../assets/find.svg" alt="find">
+            <x-input placeholder="搜索歌曲、歌手、专辑" v-model="searchText" @on-enter="search" @on-click-clear-icon="clear" @on-change="change">
             </x-input>
         </div>
-        <words v-if="isWord" @hot-search="search"></words>
+        <SearchHot v-if="isWord" @hot-search="search"></SearchHot>
         <div v-else>
             <section v-if="error">
                 <h1>暂无搜索结果</h1>
             </section>
             <section v-else>
                 <div v-if="loading">Loading.....</div>
-                <song v-else v-for="item in data" :key="item.id" :music="item"></song>
+                <Song v-else v-for="item in searchResult" :key="item.id" :music="item"></Song>
             </section>
         </div>
     </div>
@@ -20,39 +20,42 @@
 
 <script>
     import {XInput} from 'vux'
-    import words from '@/components/find/words.vue'
-    import song from '@/components/song/song.vue'
-    import { mapActions } from 'vuex'
+    import SearchHot from '@/components/SearchHot.vue'
+    import Song from '@/components/Song.vue'
+    import { mapActions, mapGetters } from 'vuex'
 
     export default {
         name: 'search',
         data() {
             return {
-                sword: '',
-                isWord: true,
+                searchText: '',
+                isWord: false,
                 loading: true,
-                data: [],
                 error: false
             }
         },
         components: {
             XInput,
-            words,
-            song
+            SearchHot,
+            Song
+        },
+        computed: {
+            ...mapGetters([
+                'searchResult'
+            ])
         },
         methods: {
             ...mapActions([
-                'getSearch'
+                'getSearch',
+                'hotWord'
             ]),
             search: function (value) {
+                this.isWord = false;
                 this.getSearch(value).then(() => {
-                    this.sword=value;
-                    this.isWord = false;
-                    this.data = this.$store.getters.searchResult;
+                    this.searchText=value;
                     this.loading = false;
                 }).catch(() => {
-                    this.sword=value;
-                    this.isWord = false;
+                    this.searchText=value;
                     this.error = true;
                 })
             },
@@ -64,6 +67,11 @@
                     this.isWord = true;
                 }
             }
+        },
+        created () {
+            this.hotWord().then(() => {
+                this.isWord = true
+            })
         }
     }
 </script>

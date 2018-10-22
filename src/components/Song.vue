@@ -1,5 +1,5 @@
 <template>
-    <a href="javascript: void(0)" class="song">
+    <a href="javascript: void(0)" class="song" @click="playMusic(music.id)">
         <div class="song-num" v-if="music.rank" :class="{highlight: music.color}">
             {{ music.rank }}
         </div>
@@ -22,19 +22,39 @@
 </template>
 
 <script>
+    import { mapActions, mapMutations } from 'vuex'
     export default {
         name: 'song',
         data () {
             return{
-
+                error: false
             }
         },
         props:{
             music: Object
+        },
+        methods: {
+            ...mapActions([
+               'getMusicUrl'
+            ]),
+            ...mapMutations([
+               'setMusic'
+            ]),
+            playMusic (id) {
+                this.getMusicUrl(id).then(() => {
+                    this.setMusic(this.music)
+                }).catch(() => {
+                    alert('获取歌曲失败！')
+                });
+                this.$router.push({
+                    path: '/play',
+                    query: { id: id}
+                })
+            }
         }
     }
 </script>
 
 <style scoped>
-   @import "song.css";
+   @import "../style/song.css";
 </style>

@@ -14,27 +14,30 @@
             </section>
             <section v-else>
                 <div v-if="loading">loading...</div>
-                <song v-else v-for="item in data" :key="item.rank" :music="item"></song>
+                <Song v-else v-for="item in rank" :key="item.id" :music="item"></Song>
             </section>
         </div>
     </div>
 </template>
 
 <script>
-    import song from '@/components/song/song.vue'
-    import { mapActions } from 'vuex'
+    import Song from '@/components/Song.vue'
+    import { mapActions,mapGetters } from 'vuex'
     export default {
-        name: 'rank',
         components: {
-            song
+            Song
         },
         data () {
             return{
                 loading: true,
-                data: [],
                 error: false,
                 time: ''
             }
+        },
+        computed: {
+            ...mapGetters([
+                'rank'
+            ])
         },
         methods: {
             ...mapActions([
@@ -43,16 +46,15 @@
         },
         created () {
             this.Rank().then(() => {
-                this.loading = false;
-                this.data = this.$store.getters.rank;
+                this.loading = false
             }).catch(() => {
-                this.error = true;
+                this.error = true
             })
         }
     }
 </script>
 
-<style>
+<style scoped>
     .hot-time{
         text-align: left;
         margin-top: 10px;
@@ -64,7 +66,7 @@
     .hot-icon{
         width: 142px;
         height: 67px;
-        background-image: url("../assets/hot_icon.png");
+        background-image: url("../../assets/hot_icon.png");
         background-position: -24px -30px;
         background-size: 166px 97px;
     }
@@ -85,7 +87,7 @@
         position: relative;
         padding-top: 38.9%;
         overflow: hidden;
-        background: url("../assets/hot_bg.jpg") no-repeat;
+        background: url("../../assets/hot_bg.jpg") no-repeat;
         background-size: contain;
     }
     .hot-top:after{

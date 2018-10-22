@@ -10,9 +10,9 @@
                 </div>
         </div>
         <tab bar-active-color="#d43c33" active-color="#d43c33">
-            <tab-item selected><router-link to="/vue" >推荐音乐</router-link></tab-item>
-            <tab-item><router-link to="/rank" >热歌榜</router-link></tab-item>
-            <tab-item><router-link to="/search" >搜索</router-link></tab-item>
+            <tab-item selected @on-item-click="setTab('Home')">推荐音乐</tab-item>
+            <tab-item @on-item-click="setTab('Rank')">热歌榜</tab-item>
+            <tab-item @on-item-click="setTab('Search')">搜索</tab-item>
         </tab>
     </div>
     </div>
@@ -25,10 +25,15 @@
         components: {
             Tab,
             TabItem
+        },
+        methods: {
+            setTab (val) {
+                this.$parent.tabName = val
+            }
         }
     }
 </script>
 
 <style scoped>
-    @import "top.css";
+    @import "../../style/top.css";
 </style>

@@ -1,5 +1,10 @@
 const getter = {
-    remdList: state => state.remdList,
+    remdList: state => {
+        return {
+            one: state.remdList.slice(0,3),
+            two: state.remdList.slice(3)
+        }
+    },
     newSong: state => state.newSong,
     rank: state => state.rank,
     hotWord: state => state.hotWord,

@@ -8,17 +8,8 @@ const getComponent = (name) => () => import(`./views/${name}.vue`); //路由懒�
 export default new Router({
     mode: 'history',
     routes: [{
-        path: '/',
-        name: '首页推荐',
-        alias: '/vue',
-        component: getComponent('Home')
-    }, {
-        path: '/rank',
-        name: '排行榜',
-        component: getComponent('Rank')
-    }, {
-        path: '/search',
-        name: '搜索',
-        component: getComponent('Search')
+        path: '/play',
+        name: '播放',
+        component: getComponent('Player')
     }]
 })

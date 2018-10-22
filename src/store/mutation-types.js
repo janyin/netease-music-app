@@ -7,3 +7,5 @@ export const SET_SONGLIST = 'SET_SONGLIST';
 export const SET_HOTWORD = 'SET_HOTWORD';
 
 export const SET_SEARCH = 'SET_SEARCH';
+
+export const SET_PLAYURL = 'SET_PLAYURL';

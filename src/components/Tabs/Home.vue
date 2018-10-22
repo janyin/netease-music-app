@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <h2 class="remd">推荐歌单</h2>
-        <list></list>
+        <SongList></SongList>
         <h2 class="remd">最新音乐</h2>
         <div>
             <section v-if="error">
@@ -9,7 +9,7 @@
             </section>
             <section v-else>
                 <div v-if="loading">loading</div>
-                <song v-else v-for="item in data" :key="item.id" :music="item"></song>
+                <Song v-else v-for="item in data" :key="item.id" :music="item"></Song>
             </section>
         </div>
         <foot></foot>
@@ -17,15 +17,15 @@
 </template>
 
 <script>
-    import list from '@/components/list/list.vue'
-    import song from '@/components/song/song.vue'
-    import foot from '@/components/foot/foot.vue'
+    import SongList from '@/components/SongList.vue'
+    import Song from '@/components/Song.vue'
+    import foot from '@/components/Footer/foot.vue'
     import { mapActions } from 'vuex'
     export default {
         name: 'home',
         components: {
-            list,
-            song,
+            SongList,
+            Song,
             foot
         },
         data () {
@@ -51,7 +51,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .content {
         height: 100%;
         padding-top: 20px;

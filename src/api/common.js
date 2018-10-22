@@ -25,3 +25,8 @@ export function getNewSong() {
     const url = HOST + '/personalized/newsong';
     return axios.get(url)
 }
+
+export function getMusicUrl(id) {
+    const url = HOST + `/music/url?id=${id}`;
+    return axios.get(url)
+}

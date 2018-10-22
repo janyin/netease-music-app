@@ -1,4 +1,4 @@
-import {getNewSong, getRank, getRemd, getWord, getSearchSong} from '@/api/common'
+import {getNewSong, getRank, getRemd, getWord, getSearchSong, getMusicUrl} from '@/api/common'
 import * as types from './mutation-types'
 
 const actions = {
@@ -15,7 +15,7 @@ const actions = {
                         artistsName = ele.ar[0].name;
                     }
                     let obj = {
-                        id: ele.dt,
+                        id: ele.id,
                         title: ele.name,
                         alias: ele.alia[0],
                         artists: artistsName,
@@ -138,6 +138,19 @@ const actions = {
                         reject()
                     }
                 })
+        })
+    },
+    getMusicUrl({commit}, id) {
+        return new Promise((resolve, reject) => {
+            getMusicUrl(id).then(res => {
+                let url = res.data.data[0].url;
+                if(url){
+                    commit(types.SET_PLAYURL, url);
+                    resolve()
+                }else {
+                    reject()
+                }
+            })
         })
     }
 };

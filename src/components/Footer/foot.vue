@@ -19,5 +19,5 @@
 </script>
 
 <style>
-    @import "foot.css";
+    @import "../../style/foot.css";
 </style>
