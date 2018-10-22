@@ -1,6 +1,6 @@
 # 网易云音乐web app
 
-  使用vue cli3构建的SPA移动端网页,目前只有搜索功能,待实现功能:播放、评论. <br>
+  使用vue cli3构建的SPA移动端网页,目前只有搜索和播放功能,待实现功能:评论. <br>
   感谢https://github.com/CaiJinyc 提供的api...
   
 ## 在线预览
