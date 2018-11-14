@@ -7,8 +7,17 @@
 url:http://liujiangdu.top/vue/  <br>
 PC端推荐在chrome调试模式下预览 <br>
 手机端直接点击链接，或者扫描下面二维码: <br>
-![](https://github.com/janyin/vue-wangyiyun-music/blob/master/qrcode.png)
+![](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/qr.png)
 
+## 网页效果截图
+首页：
+![](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/index.jpg)
+歌单：
+![](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/songlist.jpg) <br><br><br><br>
+播放：
+![](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/play.jpg)
+搜索：
+![](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/serach.jpg)
 ## Project setup
 ```
 npm install
