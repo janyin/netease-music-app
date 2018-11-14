@@ -1,6 +1,6 @@
 # 网易云音乐web app
 
-  使用vue cli3构建的SPA移动端网页,目前只有搜索和播放功能,待实现功能:评论. <br>
+  使用vue cli3构建的SPA移动端网页,有搜索、播放、和歌单功能 <br>
   api来源：https://github.com/Binaryify/NeteaseCloudMusicApi
   
 ## 在线预览
