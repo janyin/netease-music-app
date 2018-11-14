@@ -1,4 +1,4 @@
-import {getNewSong, getRank, getRemd, getWord, getSearchSong, getMusicUrl} from '@/api/common'
+import {getNewSong, getRank, getRemd, getWord, getSearchSong, getMusicUrl, getPlaylist} from '@/api/common'
 import * as types from './mutation-types'
 
 const actions = {
@@ -76,6 +76,7 @@ const actions = {
                 let song = res.data.result.slice(0,6);
                 song.forEach(function (ele){
                     let obj = {
+                        id: ele.id,
                         name: ele.name,
                         imgUrl: ele.picUrl
                     };
@@ -148,6 +149,42 @@ const actions = {
                     commit(types.SET_PLAYURL, url);
                     resolve()
                 }else {
+                    reject()
+                }
+            })
+        })
+    },
+    PlaylistDetail({commit}, id) {
+        return new Promise((resolve, reject) => {
+            getPlaylist(id).then(res => {
+                let song = res.data.playlist.tracks.slice(0,25);
+                let result = song.map((ele, index) => {
+                    let artistsName = '';
+                    if (ele.ar.length >= 2) {
+                        artistsName = ele.ar[0].name + '/' + ele.ar[1].name;
+                    } else {
+                        artistsName = ele.ar[0].name;
+                    }
+                    return {
+                        id: ele.id,
+                        title: ele.name,
+                        alias: ele.alia[0],
+                        artists: artistsName,
+                        album: ele.al.name,
+                        rank: index+1
+                    }
+                });
+                let obj = {
+                    tags: res.data.playlist.tags,
+                    des: res.data.playlist.description,
+                    music: result,
+                    name: res.data.playlist.name,
+                    imgUrl: res.data.playlist.coverImgUrl
+                };
+                if (result.length) {
+                    commit(types.SET_LISTDETAIL, obj);
+                    resolve()
+                } else {
                     reject()
                 }
             })

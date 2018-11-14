@@ -9,3 +9,5 @@ export const SET_HOTWORD = 'SET_HOTWORD';
 export const SET_SEARCH = 'SET_SEARCH';
 
 export const SET_PLAYURL = 'SET_PLAYURL';
+
+export const SET_LISTDETAIL = 'SET_LISTDETAIL';

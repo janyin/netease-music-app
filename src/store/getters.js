@@ -1,3 +1,4 @@
+
 const getter = {
     remdList: state => {
         return {
@@ -9,6 +10,10 @@ const getter = {
     rank: state => state.rank,
     hotWord: state => state.hotWord,
     searchResult: state => state.searchResult,
+    listDetail: state => state.listDetail,
+    currentPlayUrl: state => state.currentPlayUrl,
+    load: state => state.load,
+    musicLoad: state => state.musicLoad
 };
 
 export default getter

@@ -38,17 +38,19 @@
                'getMusicUrl'
             ]),
             ...mapMutations([
-               'setMusic'
+                'setLoad',
+                'setMusicLoad'
             ]),
             playMusic (id) {
+                this.setLoad(true);
+                let that = this;
                 this.getMusicUrl(id).then(() => {
-                    this.setMusic(this.music)
+                    that.setMusicLoad(true)
                 }).catch(() => {
+                    that.setMusicLoad(false);
                     alert('获取歌曲失败！')
-                });
-                this.$router.push({
-                    path: '/play',
-                    query: { id: id}
+                }).finally(() => {
+                    this.setLoad(false)
                 })
             }
         }

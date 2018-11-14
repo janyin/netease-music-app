@@ -56,7 +56,7 @@
     display: flex;
 }
 .highlight{
-    color: #df3436;
+    color: #df3436 !important;
 }
 .song-wrapper{
     position: relative;

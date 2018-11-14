@@ -19,8 +19,14 @@ const mutations = {
     [types.SET_PLAYURL] (state, url) { //设置播放歌曲url
         state.currentPlayUrl = url
     },
-    setMusic (state, obj) { //设置播放歌曲信息
-        state.music = obj
+    [types.SET_LISTDETAIL] (state, obj) { //设置歌单详情
+        state.listDetail = obj;
+    },
+    setLoad (state, val) { //设置加载
+        state.load = val
+    },
+    setMusicLoad (state, val) { //设置播放器
+        state.musicLoad = val
     }
 };
 

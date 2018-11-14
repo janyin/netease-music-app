@@ -1,58 +1,57 @@
 <template>
-  <div id="app">
-    <top></top>
-    <keep-alive>
-      <component :is="getTab"></component>
-    </keep-alive>
-    <div class="player">
-    <router-view></router-view>
+    <div id="app">
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+        <Loading :show="load" :text="loadText"></Loading>
+        <player v-if="musicLoad" class="player"></player>
     </div>
-  </div>
 </template>
 
 <script>
-    import top from './components/Top/top.vue'
-    import Home from './components/Tabs/Home.vue'
-    import Rank from './components/Tabs/Rank.vue'
-    import Search from './components/Tabs/Search.vue'
+    import {mapGetters} from 'vuex'
+    import { Loading } from 'vux'
+    import player from './components/Player.vue'
+
     export default {
         name: 'App',
-        data: () => ({
-            tabName: 'Home'
-        }),
-        computed: {
-            getTab () {
-                return this.tabName
+        data () {
+            return{
+                loadText: '加载中...'
             }
         },
+        computed: {
+            ...mapGetters([
+                'load',
+                'musicLoad'
+            ])
+        },
         components: {
-            top,
-            Home,
-            Rank,
-            Search
+            player,
+            Loading
         }
     }
 </script>
 
 <style>
-  *{
-    padding: 0;
-    margin: 0;
-  }
-  a{
-    text-decoration: none;
-    color: black;
-  }
-  #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font: 14px/1.5 Helvetica,sans-serif;
-  color: #333;
-  }
-  .player{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 9999;
-  }
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    #app {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font: 14px/1.5 Helvetica, sans-serif;
+        color: #333;
+    }
+    .player {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 9999;
+    }
 </style>

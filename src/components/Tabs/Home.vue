@@ -22,7 +22,6 @@
     import foot from '@/components/Footer/foot.vue'
     import { mapActions } from 'vuex'
     export default {
-        name: 'home',
         components: {
             SongList,
             Song,
@@ -53,7 +52,6 @@
 
 <style scoped>
     .content {
-        height: 100%;
         padding-top: 20px;
     }
     .remd {

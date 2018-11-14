@@ -4,7 +4,7 @@
             <div class="hot-flex">
                 <div class="hot-icon"></div>
                 <div class="hot-time">
-                    更新日期：10月11日
+                    更新日期：11月8日
                 </div>
             </div>
         </div>
@@ -12,7 +12,7 @@
             <section v-if="error">
                 <h1>加载失败！</h1>
             </section>
-            <section v-else>
+            <section v-else style="padding-bottom: 68px">
                 <div v-if="loading">loading...</div>
                 <Song v-else v-for="item in rank" :key="item.id" :music="item"></Song>
             </section>
@@ -30,8 +30,7 @@
         data () {
             return{
                 loading: true,
-                error: false,
-                time: ''
+                error: false
             }
         },
         computed: {

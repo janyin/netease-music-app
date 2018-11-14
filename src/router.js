@@ -8,8 +8,10 @@ const getComponent = (name) => () => import(`./views/${name}.vue`); //路由懒�
 export default new Router({
     mode: 'history',
     routes: [{
-        path: '/play',
-        name: '播放',
-        component: getComponent('Player')
+        path:'/playlist/detail',
+        component: getComponent('PlayList')
+    },{
+        path: '/',
+        component: getComponent('mainLayOut')
     }]
 })

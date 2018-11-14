@@ -27,6 +27,11 @@ export function getNewSong() {
 }
 
 export function getMusicUrl(id) {
-    const url = HOST + `/music/url?id=${id}`;
+    const url = HOST + `/song/url?id=${id}`;
+    return axios.get(url)
+}
+
+export function getPlaylist(id) {
+    const url = HOST + `/playlist/detail?id=${id}`;
     return axios.get(url)
 }

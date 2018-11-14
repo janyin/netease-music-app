@@ -14,8 +14,7 @@
         }),
         computed: {
             ...mapState([
-                'currentPlayUrl',
-                'music'
+                'currentPlayUrl'
             ])
         }
     }
