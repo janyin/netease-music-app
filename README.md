@@ -89,7 +89,7 @@ npm install
 npm run serve
 ```
 
-### 打包发表
+### 打包发布
 ```
 npm run build
 ```````
