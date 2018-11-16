@@ -19,22 +19,77 @@ PC端推荐在chrome调试模式下预览 <br>
 ![](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/play.jpg)
 搜索：
 ![](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/serach.jpg)
-## Project setup
+
+##  源码解析
+src目录解析：
+
+```
+│  App.vue
+│  main.js  
+│  router.js
+│  
+├─api              
+│      common.js   //设置请求地址具体url
+│      config.js  //api配置相关
+│      
+├─assets         //静态图片
+│      find.svg
+│      hot_bg.jpg
+│      hot_icon.png
+│      play.png
+│      
+├─components
+│  │  Player.vue      //播放功能
+│  │  SearchHot.vue   //搜索热词
+│  │  Song.vue        //歌曲信息
+│  │  SongList.vue    //歌单信息
+│  │  
+│  ├─Footer  //主页的底部UI
+│  │      foot.svg
+│  │      foot.vue
+│  │      footbg.png
+│  │      
+│  ├─Tabs   //三大Tab页面,主页/排行榜/搜索
+│  │      Home.vue
+│  │      Rank.vue
+│  │      Search.vue
+│  │      
+│  └─Top    //主页的头部UI
+│          logo.svg
+│          top.vue
+│          
+├─store     //vuex
+│      actions.js
+│      getters.js
+│      index.js
+│      mutation-types.js
+│      mutations.js
+│      state.js
+│      
+├─style     //css配置
+│      foot.css
+│      list.css
+│      playlist.css
+│      song.css
+│      top.css
+│      words.css
+│      
+└─views      //路由配置，两个页面，主布局页面/歌单页面
+        mainLayOut.vue
+        PlayList.vue
+```
+
+## 安装依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 编译预览
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 打包发表
 ```
 npm run build
 ```````
-
-### Lints and fixes files
-```
-npm run lint
-```
