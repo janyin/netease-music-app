@@ -46,7 +46,7 @@ src目录解析：
 │  │  
 │  ├─Footer  //主页的底部UI
 │  │      foot.svg
-│  │      foot.vue
+│  │      Foot.vue
 │  │      footbg.png
 │  │      
 │  ├─Tabs   //三大Tab页面,主页/排行榜/搜索
@@ -56,7 +56,7 @@ src目录解析：
 │  │      
 │  └─Top    //主页的头部UI
 │          logo.svg
-│          top.vue
+│          Top.vue
 │          
 ├─store     //vuex
 │      actions.js
@@ -84,7 +84,7 @@ src目录解析：
 npm install
 ```
 
-### 编译预览
+### 开发编译
 ```
 npm run serve
 ```
