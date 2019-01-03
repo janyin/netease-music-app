@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { HOST } from './config'
+import {
+    HOST
+} from './config'
 
 export function getWord() {
     const url = HOST + `/search/hot`;
