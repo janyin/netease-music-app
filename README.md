@@ -5,7 +5,7 @@
   整体UI就是网易云音乐官网的，播放就一个组件没写单独页面，用的是原生的H5<audio>
   
 ## 在线预览
-url:http://music.islife.top  <br>
+url:http://music.liujiangdu.top  <br>
 PC端推荐在chrome调试模式下预览 <br>
 手机端直接点击链接 <br>
 
