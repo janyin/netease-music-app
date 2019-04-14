@@ -42,57 +42,65 @@ src目录解析：
 
 ```
 │  App.vue
-│  main.js  
+│  main.js
 │  router.js
-│  
-├─api              
-│      common.js   //设置请求地址具体url
-│      config.js  //api配置相关
-│      
-├─assets         //静态图片
+│
+├─api //api配置文件夹
+│      common.js
+│      config.js
+│
+├─assets //静态图片资源
 │      find.svg
 │      hot_bg.jpg
 │      hot_icon.png
 │      play.png
-│      
+│
 ├─components
-│  │  Player.vue      //播放功能
-│  │  SearchHot.vue   //搜索热词
-│  │  Song.vue        //歌曲信息
-│  │  SongList.vue    //歌单信息
-│  │  
-│  ├─Footer  //主页的底部UI
+│  ├─HomeBottom //主页底部组件
 │  │      foot.svg
-│  │      Foot.vue
 │  │      footbg.png
-│  │      
-│  ├─Tabs   //三大Tab页面,主页/排行榜/搜索
-│  │      Home.vue
-│  │      Rank.vue
-│  │      Search.vue
-│  │      
-│  └─Top    //主页的头部UI
-│          logo.svg
-│          Top.vue
-│          
-├─store     //vuex
+│  │      index.vue
+│  │
+│  ├─HomeTop //主页头部组件
+│  │      index.vue
+│  │      logo.svg
+│  │
+│  ├─HotWord //热门搜索词
+│  │      index.vue
+│  │
+│  ├─MusicPlayer //播放器组件
+│  │      index.vue
+│  │
+│  ├─RecommendList //推荐歌单
+│  │      index.vue
+│  │
+│  ├─SongItem //歌曲组件
+│  │      index.vue
+│  │
+│  ├─TabIndex //tab的首页
+│  │      index.vue
+│  │
+│  ├─TabRank //tab的排行榜页
+│  │      index.vue
+│  │
+│  └─TabSearch //tab的搜索页
+│          index.vue
+│
+├─store //vuex
 │      actions.js
 │      getters.js
 │      index.js
 │      mutation-types.js
 │      mutations.js
 │      state.js
-│      
-├─style     //css配置
-│      foot.css
-│      list.css
-│      playlist.css
-│      song.css
-│      top.css
-│      words.css
-│      
-└─views      //路由配置，两个页面，主布局页面/歌单页面
-        mainLayOut.vue
-        PlayList.vue
+│
+├─styles
+│      playlist_page.css
+│      remd_list.css
+│      song_item.css
+│
+└─views
+        HomePage.vue  //主界面
+        PlayListPage.vue //歌单页
 ```
 
