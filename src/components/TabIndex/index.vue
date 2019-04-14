@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <h2 class="remd">推荐歌单</h2>
-    <SongList></SongList>
+    <recommend-list></recommend-list>
     <h2 class="remd">最新音乐</h2>
     <div>
       <section v-if="error">
@@ -9,30 +9,32 @@
       </section>
       <section v-else>
         <div v-if="loading">loading</div>
-        <Song v-else v-for="item in data" :key="item.id" :music="item"></Song>
+        <div v-else>
+          <song-item v-for="item in data" :key="item.id" :music="item"></song-item>
+        </div>
       </section>
     </div>
-    <Foot></Foot>
+    <home-bottom></home-bottom>
   </div>
 </template>
 
 <script>
-import SongList from "@/components/SongList.vue";
-import Song from "@/components/Song.vue";
-import Foot from "@/components/Footer/Foot.vue";
+import RecommendList from "@/components/RecommendList/index.vue";
+import SongItem from "@/components/SongItem/index.vue";
+import HomeBottom from "@/components/HomeBottom/index.vue";
 import { mapActions } from "vuex";
 export default {
-  components: {
-    SongList,
-    Song,
-    Foot
-  },
   data() {
     return {
       loading: true,
       data: [],
       error: false
     }
+  },
+  components: {
+    RecommendList,
+    SongItem,
+    HomeBottom
   },
   methods: {
     ...mapActions(["newSong"])

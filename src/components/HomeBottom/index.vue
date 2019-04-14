@@ -1,3 +1,16 @@
+<template>
+  <div class="foot">
+    <div class="foot-wrapper">
+      <div class="foot-logo">
+        <img src="./foot.svg" alt="logo" class="logosvg">
+      </div>
+      <div class="openapp">打开APP，发现更多好音乐</div>
+      <p class="copyright">前端小江模仿网站 仅供学习交流</p>
+    </div>
+  </div>
+</template>
+
+<style scoped>
 .copyright{
     color: #888;
     font-size: 12px;
@@ -26,7 +39,7 @@
     position: relative;
     padding-top: 53.3%;
     margin-top: 4px;
-    background: url("../components/Footer/footbg.png") no-repeat;
+    background: url("./footbg.png") no-repeat;
     background-size: contain;
 }
 .foot-wrapper{
@@ -38,3 +51,4 @@
     z-index: 1;
     text-align: center;
 }
+</style>

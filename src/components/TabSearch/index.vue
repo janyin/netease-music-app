@@ -10,24 +10,26 @@
         @on-change="change"
       ></x-input>
     </div>
-    <SearchHot v-if="isWord" @hot-search="search"></SearchHot>
+    <hot-word v-if="isWord" @hot-search="search"></hot-word>
     <div v-else>
       <section v-if="error">
         <h1>暂无搜索结果</h1>
       </section>
       <section v-else>
         <div v-if="loading">Loading.....</div>
-        <Song v-else v-for="item in searchResult" :key="item.id" :music="item"></Song>
+        <div v-else>
+          <song-item v-for="item in searchResult" :key="item.id" :music="item"></song-item>
+        </div>
       </section>
     </div>
   </div>
 </template>
 
 <script>
-import { XInput } from "vux";
-import SearchHot from "@/components/SearchHot.vue";
-import Song from "@/components/Song.vue";
 import { mapActions, mapGetters } from "vuex";
+import { XInput } from "vux";
+import HotWord from "@/components/HotWord/index.vue";
+import SongItem from "@/components/SongItem/index.vue";
 
 export default {
   data() {
@@ -36,12 +38,12 @@ export default {
       isWord: false,
       loading: true,
       error: false
-    }
+    };
   },
   components: {
     XInput,
-    SearchHot,
-    Song
+    HotWord,
+    SongItem
   },
   computed: {
     ...mapGetters(["searchResult"])
@@ -74,7 +76,7 @@ export default {
       this.isWord = true;
     });
   }
-}
+};
 </script>
 
 <style scoped>

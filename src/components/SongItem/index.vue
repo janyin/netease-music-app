@@ -28,7 +28,10 @@ export default {
     }
   },
   props: {
-    music: Object
+    music: {
+      type: Object,
+      required: true
+    }
   },
   methods: {
     ...mapActions(["getMusicUrl"]),
@@ -53,5 +56,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../style/song.css";
+@import "../../styles/song_item.css";
 </style>

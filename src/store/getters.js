@@ -1,6 +1,6 @@
 
 const getter = {
-    remdList: state => {
+    remdList: state => { //切割推荐歌单数据
         return {
             one: state.remdList.slice(0,3),
             two: state.remdList.slice(3)

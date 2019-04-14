@@ -6,7 +6,7 @@ const state = {
     hotWord: [], //搜索热词
     searchResult: [], //搜索结果
     currentPlayUrl: '', //当前播放歌曲url
-    musicLoad: false,
+    musicLoad: false, //播放器是否显示
     listDetail: {} //歌单详情信息
 };
 

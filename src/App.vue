@@ -4,29 +4,29 @@
       <router-view></router-view>
     </keep-alive>
     <Loading :show="load" :text="loadText"></Loading>
-    <player v-if="musicLoad" class="player"></player>
+    <music-player v-if="musicLoad" class="player"></music-player>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import { Loading } from "vux";
-import player from "./components/Player.vue";
+import MusicPlayer from "./components/MusicPlayer/index.vue";
 
 export default {
   data() {
     return {
       loadText: "加载中..."
-    }
+    };
   },
   computed: {
     ...mapGetters(["load", "musicLoad"])
   },
   components: {
-    player,
+    MusicPlayer,
     Loading
   }
-}
+};
 </script>
 
 <style>

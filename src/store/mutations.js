@@ -22,10 +22,10 @@ const mutations = {
     [types.SET_LISTDETAIL](state, obj) { //设置歌单详情
         state.listDetail = obj;
     },
-    setLoad(state, val) { //设置加载
+    setLoad(state, val) { //设置加载组件是否显示
         state.load = val
     },
-    setMusicLoad(state, val) { //设置播放器
+    setMusicLoad(state, val) { //设置播放器是否显示
         state.musicLoad = val
     }
 };

@@ -3,7 +3,7 @@
     <div class="hot-top">
       <div class="hot-flex">
         <div class="hot-icon"></div>
-        <div class="hot-time">更新日期：1月3日</div>
+        <div class="hot-time">更新日期：4月11日</div>
       </div>
     </div>
     <div>
@@ -12,24 +12,26 @@
       </section>
       <section v-else style="padding-bottom: 68px">
         <div v-if="loading">loading...</div>
-        <Song v-else v-for="item in rank" :key="item.id" :music="item"></Song>
+        <div v-else>
+          <song-item v-for="item in rank" :key="item.id" :music="item"></song-item>
+        </div>
       </section>
     </div>
   </div>
 </template>
 
 <script>
-import Song from "@/components/Song.vue";
+import SongItem from "@/components/SongItem/index.vue";
 import { mapActions, mapGetters } from "vuex";
 export default {
-  components: {
-    Song
-  },
   data() {
     return {
       loading: true,
       error: false
     }
+  },
+  components: {
+    SongItem
   },
   computed: {
     ...mapGetters(["rank"])

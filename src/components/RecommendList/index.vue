@@ -81,5 +81,5 @@ export default {
 </script>
 
 <style>
-@import "../style/list.css";
+@import "../../styles/remd_list.css";
 </style>

@@ -9,9 +9,9 @@ export default new Router({
     mode: 'history',
     routes: [{
         path: '/playlist/detail',
-        component: getComponent('PlayList')
+        component: getComponent('PlayListPage') //歌单页面
     }, {
         path: '/',
-        component: getComponent('mainLayOut')
+        component: getComponent('HomePage') //主界面
     }]
 })

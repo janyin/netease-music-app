@@ -12,7 +12,7 @@ import * as types from './mutation-types'
 const actions = {
     Rank({
         commit
-    }) {
+    }) { //获取歌曲排行榜数据
         return new Promise((resolve, reject) => {
             getRank().then(res => {
                 let result = [];
@@ -51,7 +51,7 @@ const actions = {
     },
     newSong({
         commit
-    }) {
+    }) { //获取最新歌曲数据
         return new Promise((resolve, reject) => {
             getNewSong().then(res => {
                 let result = [];
@@ -83,7 +83,7 @@ const actions = {
     },
     songList({
         commit
-    }) {
+    }) { //获取推荐歌单数据
         return new Promise((resolve, reject) => {
             getRemd().then(res => {
                 let result = [];
@@ -113,7 +113,7 @@ const actions = {
     },
     hotWord({
         commit
-    }) {
+    }) { //获取热门搜索词数据
         return new Promise((resolve, reject) => {
             getWord().then(res => {
                 let word = res.data.result.hots;
@@ -128,7 +128,7 @@ const actions = {
     },
     getSearch({
         commit
-    }, value) {
+    }, value) { //获取搜索结果数据
         return new Promise((resolve, reject) => {
             const word = value.trim();
             getSearchSong(word).then(res => {
@@ -161,7 +161,7 @@ const actions = {
     },
     getMusicUrl({
         commit
-    }, id) {
+    }, id) { //获取音乐播放地址
         return new Promise((resolve, reject) => {
             getMusicUrl(id).then(res => {
                 let url = res.data.data[0].url;
@@ -176,7 +176,7 @@ const actions = {
     },
     PlaylistDetail({
         commit
-    }, id) {
+    }, id) { //获取歌单详细信息
         return new Promise((resolve, reject) => {
             getPlaylist(id).then(res => {
                 let song = res.data.playlist.tracks.slice(0, 25);
