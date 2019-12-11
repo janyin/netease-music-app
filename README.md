@@ -21,11 +21,6 @@
   npm run build (打包发布)
   ```
 
-## 在线预览
-url:http://music.liujiangdu.top  <br>
-PC端推荐在chrome调试模式下预览 <br>
-手机端直接点击链接 <br>
-
 
 ## 网页效果截图
 首页：
