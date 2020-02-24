@@ -3,7 +3,7 @@
     <div class="hot-top">
       <div class="hot-flex">
         <div class="hot-icon"></div>
-        <div class="hot-time">更新日期：4月11日</div>
+        <div class="hot-time">更新日期：{{ getTime }}</div>
       </div>
     </div>
     <div>
@@ -34,7 +34,13 @@ export default {
     SongItem
   },
   computed: {
-    ...mapGetters(["rank"])
+    ...mapGetters(["rank"]),
+    getTime(){
+      let d = new Date();
+      let month =  d.getMonth();
+      let day = d.getDate();
+      return `${month + 1 }月${day}日`;
+    }
   },
   methods: {
     ...mapActions(["Rank"])
