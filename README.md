@@ -5,6 +5,8 @@
   使用vue cli3构建的SPA移动端网页,有搜索、播放、和歌单功能 <br>
   api来源：https://github.com/Binaryify/NeteaseCloudMusicApi <br>
   整体UI就是网易云音乐官网的，播放就一个组件没写单独页面，用的是原生的H5<audio>
+## 在线预览效果：
+   > http://music.wanegbt.cn/
 ## 技术栈：
   vue+vue-router+vuex+axios;部分UI用到vux
 ## 运行此项目：
