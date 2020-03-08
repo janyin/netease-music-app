@@ -43,10 +43,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["Rank"])
+    ...mapActions(["getRankList"])
   },
   created() {
-    this.Rank()
+    this.getRankList()
       .then(() => {
         this.loading = false;
       })

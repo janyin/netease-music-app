@@ -37,10 +37,10 @@ export default {
     HomeBottom
   },
   methods: {
-    ...mapActions(["newSong"])
+    ...mapActions(["getNewSongList"])
   },
   created() {
-    this.newSong()
+    this.getNewSongList()
       .then(() => {
         this.loading = false;
         this.data = this.$store.getters.newSong;

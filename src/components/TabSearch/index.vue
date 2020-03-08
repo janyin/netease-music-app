@@ -49,10 +49,10 @@ export default {
     ...mapGetters(["searchResult"])
   },
   methods: {
-    ...mapActions(["getSearch", "hotWord"]),
+    ...mapActions(["getSearchResult", "getTrendingWord"]),
     search: function(value) {
       this.isWord = false;
-      this.getSearch(value)
+      this.getSearchResult(value)
         .then(() => {
           this.searchText = value;
           this.loading = false;
@@ -72,7 +72,7 @@ export default {
     }
   },
   created() {
-    this.hotWord().then(() => {
+    this.getTrendingWord().then(() => {
       this.isWord = true;
     });
   }

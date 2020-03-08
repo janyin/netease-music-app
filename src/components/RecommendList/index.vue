@@ -46,11 +46,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["songList", "PlaylistDetail"]),
+    ...mapActions(["getRemdSongList", "getListDetail"]),
     ...mapMutations(["setLoad"]),
     listDetail: function(item) {
       this.setLoad(true);
-      this.PlaylistDetail(item.id)
+      this.getListDetail(item.id)
         .then(() => {
           this.$router.push({
             path: "/playlist/detail",
@@ -69,7 +69,7 @@ export default {
     ...mapGetters(["remdList"])
   },
   created() {
-    this.songList()
+    this.getRemdSongList()
       .then(() => {
         this.loading = false;
       })

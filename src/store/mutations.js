@@ -7,7 +7,7 @@ const mutations = {
     [types.SET_NEWSONG](state, newSong) { //最新音乐
         state.newSong = newSong
     },
-    [types.SET_SONGLIST](state, remdList) { //推荐歌单
+    [types.SET_REMDSONGLIST](state, remdList) { //推荐歌单
         state.remdList = remdList
     },
     [types.SET_HOTWORD](state, hotWord) { //搜索热词
@@ -22,12 +22,18 @@ const mutations = {
     [types.SET_LISTDETAIL](state, obj) { //设置歌单详情
         state.listDetail = obj;
     },
-    setLoad(state, val) { //设置加载组件是否显示
-        state.load = val
+    [types.SET_CURRENTMUSIC](state, obj) { //设置当前播放音乐信息
+        state.currentMusic = obj;
     },
-    setMusicLoad(state, val) { //设置播放器是否显示
-        state.musicLoad = val
-    }
+    setLoad(state, val) { //设置loading组件是否显示
+        state.isLoad = val
+    },
+    setToast(state, val) { //设置toast组件是否显示
+        state.isToast = val
+    },
+    setPlayer(state, val) { //设置播放器是否显示
+        state.isPlayer = val
+    },
 };
 
 export default mutations

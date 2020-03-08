@@ -3,28 +3,36 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <Loading :show="load" :text="loadText"></Loading>
-    <music-player v-if="musicLoad" class="player"></music-player>
+    <Loading :show="isLoad" :text="loadText"></Loading>
+    <Toast text="歌曲暂无版权" type="cancel" :time="1000" :value="isToast" @on-hide="totast"></Toast>
+    <music-player v-if="isPlayer" class="player"></music-player>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { Loading } from "vux";
+import { mapGetters, mapMutations } from "vuex";
+import { Loading, Toast } from "vux";
 import MusicPlayer from "./components/MusicPlayer/index.vue";
 
 export default {
   data() {
     return {
-      loadText: "加载中..."
+      loadText: "加载中...",
     };
   },
   computed: {
-    ...mapGetters(["load", "musicLoad"])
+    ...mapGetters(["isLoad", "isPlayer", "isToast"])
+  },
+  methods: {
+    ...mapMutations(["setToast"]),
+    totast(){
+      this.setToast(false);
+    }
   },
   components: {
     MusicPlayer,
-    Loading
+    Loading,
+    Toast
   }
 };
 </script>
@@ -49,5 +57,8 @@ a {
   bottom: 0;
   left: 0;
   z-index: 9999;
+}
+.weui-progress__inner-bar {
+  background: #d43c33 !important;
 }
 </style>

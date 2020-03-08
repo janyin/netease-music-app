@@ -4,11 +4,21 @@
       <div class="foot-logo">
         <img src="./foot.svg" alt="logo" class="logosvg">
       </div>
-      <div class="openapp">打开APP，发现更多好音乐</div>
-      <p class="copyright">前端小江模仿网站 仅供学习交流</p>
+      <div class="openapp" @click="gotoGithub">如果喜欢可以给个star⭐->GitHub</div>
+      <p class="copyright">模仿网站 仅供学习交流</p>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods:{
+    gotoGithub() {
+      window.open("https://github.com/janyin/vue-wangyiyun-music","_blank");
+    }
+  }
+}
+</script>
 
 <style scoped>
 .copyright{

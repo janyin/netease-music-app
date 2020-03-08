@@ -1,5 +1,5 @@
 <template>
-  <a href="javascript: void(0)" class="song" @click="playMusic(music.id)">
+  <a href="javascript: void(0)" class="song" @click="playMusic(music)">
     <div class="song-num" v-if="music.rank" :class="{highlight: music.color}">{{ music.rank }}</div>
     <div class="song-wrapper">
       <div class="song-info">
@@ -21,12 +21,8 @@
 
 <script>
 import { mapActions, mapMutations } from "vuex";
+
 export default {
-  data() {
-    return {
-      error: false
-    }
-  },
   props: {
     music: {
       type: Object,
@@ -34,22 +30,18 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getMusicUrl"]),
-    ...mapMutations(["setLoad", "setMusicLoad"]),
-    playMusic(id) {
+    ...mapActions(["getMusicData"]),
+    ...mapMutations(["setLoad", "setToast", "setPlayer"]),
+    async playMusic(music) {
       this.setLoad(true);
-      let that = this;
-      this.getMusicUrl(id)
-        .then(() => {
-          that.setMusicLoad(true);
-        })
-        .catch(() => {
-          that.setMusicLoad(false);
-          alert("获取歌曲失败！");
-        })
-        .finally(() => {
-          this.setLoad(false);
-        });
+      try{
+        let res = await this.getMusicData(music);
+        this.setPlayer(true);
+      }catch (err){
+        this.setToast(true);
+      }finally{
+        this.setLoad(false);
+      }
     }
   }
 }

@@ -12,8 +12,9 @@ const getter = {
     searchResult: state => state.searchResult,
     listDetail: state => state.listDetail,
     currentPlayUrl: state => state.currentPlayUrl,
-    load: state => state.load,
-    musicLoad: state => state.musicLoad
+    isLoad: state => state.isLoad,
+    isToast: state => state.isToast,
+    isPlayer: state => state.isPlayer
 };
 
 export default getter

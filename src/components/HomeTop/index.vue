@@ -4,7 +4,7 @@
       <div class="top-fix">
         <img src="./logo.svg" alt="logo" class="topsvg">
         <div class="topfr">
-          <span>下载APP</span>
+          <span>Vue.js</span>
         </div>
       </div>
       <tab bar-active-color="#d43c33" active-color="#d43c33">
