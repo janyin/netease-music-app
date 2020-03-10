@@ -1,3 +1,4 @@
+// 单个歌曲组件
 <template>
   <a href="javascript: void(0)" class="song" @click="playMusic(music)">
     <div class="song-num" v-if="music.rank" :class="{highlight: music.color}">{{ music.rank }}</div>
@@ -48,5 +49,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../styles/song_item.css";
+@import "~@/styles/song_item.css";
 </style>

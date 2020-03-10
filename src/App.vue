@@ -5,14 +5,14 @@
     </keep-alive>
     <Loading :show="isLoad" :text="loadText"></Loading>
     <Toast text="歌曲暂无版权" type="cancel" :time="1000" :value="isToast" @on-hide="totast"></Toast>
-    <music-player v-if="isPlayer" class="player"></music-player>
+    <MinPlayer v-if="isPlayer" class="player"></MinPlayer>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import { Loading, Toast } from "vux";
-import MusicPlayer from "./components/MusicPlayer/index.vue";
+import MinPlayer from "@/components/minPlayer.vue";
 
 export default {
   data() {
@@ -30,7 +30,7 @@ export default {
     }
   },
   components: {
-    MusicPlayer,
+    MinPlayer,
     Loading,
     Toast
   }

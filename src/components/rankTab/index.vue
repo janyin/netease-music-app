@@ -1,3 +1,4 @@
+// 排行榜选项卡
 <template>
   <div>
     <div class="hot-top">
@@ -13,7 +14,7 @@
       <section v-else style="padding-bottom: 68px">
         <div v-if="loading">loading...</div>
         <div v-else>
-          <song-item v-for="item in rank" :key="item.id" :music="item"></song-item>
+          <Song v-for="item in rank" :key="item.id" :music="item"></Song>
         </div>
       </section>
     </div>
@@ -21,8 +22,9 @@
 </template>
 
 <script>
-import SongItem from "@/components/SongItem/index.vue";
 import { mapActions, mapGetters } from "vuex";
+import Song from "@/components/song.vue";
+
 export default {
   data() {
     return {
@@ -31,7 +33,7 @@ export default {
     }
   },
   components: {
-    SongItem
+    Song
   },
   computed: {
     ...mapGetters(["rank"]),
@@ -69,7 +71,7 @@ export default {
 .hot-icon {
   width: 142px;
   height: 67px;
-  background-image: url("../../assets/hot_icon.png");
+  background-image: url("~@/assets/hot_icon.png");
   background-position: -24px -30px;
   background-size: 166px 97px;
 }
@@ -90,7 +92,7 @@ export default {
   position: relative;
   padding-top: 38.9%;
   overflow: hidden;
-  background: url("../../assets/hot_bg.jpg") no-repeat;
+  background: url("~@/assets/hot_bg.jpg") no-repeat;
   background-size: contain;
 }
 .hot-top:after {

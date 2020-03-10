@@ -2,7 +2,7 @@
   <div class="foot">
     <div class="foot-wrapper">
       <div class="foot-logo">
-        <img src="./foot.svg" alt="logo" class="logosvg">
+        <img src="@/assets/foot.svg" alt="logo" class="logosvg">
       </div>
       <div class="openapp" @click="gotoGithub">如果喜欢可以给个star⭐->GitHub</div>
       <p class="copyright">模仿网站 仅供学习交流</p>
@@ -49,7 +49,7 @@ export default {
     position: relative;
     padding-top: 53.3%;
     margin-top: 4px;
-    background: url("./footbg.png") no-repeat;
+    background: url("~@/assets/footbg.png") no-repeat;
     background-size: contain;
 }
 .foot-wrapper{

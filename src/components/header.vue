@@ -1,16 +1,17 @@
+// 网站头部
 <template>
   <div class="top">
     <div class="home-top">
       <div class="top-fix">
-        <img src="./logo.svg" alt="logo" class="topsvg">
+        <img src="@/assets/logo.svg" alt="logo" class="topsvg">
         <div class="topfr">
           <span>Vue.js</span>
         </div>
       </div>
       <tab bar-active-color="#d43c33" active-color="#d43c33">
-        <tab-item selected @on-item-click="setTab('TabIndex')">推荐音乐</tab-item>
-        <tab-item @on-item-click="setTab('TabRank')">热歌榜</tab-item>
-        <tab-item @on-item-click="setTab('TabSearch')">搜索</tab-item>
+        <tab-item selected @on-item-click="setTab('IndexTab')">推荐音乐</tab-item>
+        <tab-item @on-item-click="setTab('RankTab')">热歌榜</tab-item>
+        <tab-item @on-item-click="setTab('SearchTab')">搜索</tab-item>
       </tab>
     </div>
   </div>

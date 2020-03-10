@@ -1,7 +1,8 @@
+// 首页选项卡
 <template>
   <div class="content">
     <h2 class="remd">推荐歌单</h2>
-    <recommend-list></recommend-list>
+    <RecommendList></RecommendList>
     <h2 class="remd">最新音乐</h2>
     <div>
       <section v-if="error">
@@ -10,19 +11,20 @@
       <section v-else>
         <div v-if="loading">loading</div>
         <div v-else>
-          <song-item v-for="item in data" :key="item.id" :music="item"></song-item>
+          <Song v-for="item in data" :key="item.id" :music="item"></Song>
         </div>
       </section>
     </div>
-    <home-bottom></home-bottom>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import RecommendList from "@/components/RecommendList/index.vue";
-import SongItem from "@/components/SongItem/index.vue";
-import HomeBottom from "@/components/HomeBottom/index.vue";
 import { mapActions } from "vuex";
+import RecommendList from "@/components/indexTab/recommendList.vue";
+import Song from "@/components/song.vue";
+import Footer from "@/components/indexTab/footer.vue";
+
 export default {
   data() {
     return {
@@ -33,8 +35,8 @@ export default {
   },
   components: {
     RecommendList,
-    SongItem,
-    HomeBottom
+    Song,
+    Footer
   },
   methods: {
     ...mapActions(["getNewSongList"])

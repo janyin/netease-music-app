@@ -1,7 +1,8 @@
+//搜索选项卡
 <template>
   <div>
     <div class="search">
-      <img class="find" src="../../assets/find.svg" alt="find">
+      <img class="find" src="@/assets/find.svg" alt="find">
       <x-input
         placeholder="搜索歌曲、歌手、专辑"
         v-model="searchText"
@@ -10,7 +11,7 @@
         @on-change="change"
       ></x-input>
     </div>
-    <hot-word v-if="isWord" @hot-search="search"></hot-word>
+    <Trending v-if="isWord" @hot-search="search"></Trending>
     <div v-else>
       <section v-if="error">
         <h1>暂无搜索结果</h1>
@@ -18,7 +19,7 @@
       <section v-else>
         <div v-if="loading">Loading.....</div>
         <div v-else>
-          <song-item v-for="item in searchResult" :key="item.id" :music="item"></song-item>
+          <Song v-for="item in searchResult" :key="item.id" :music="item"></Song>
         </div>
       </section>
     </div>
@@ -28,8 +29,8 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { XInput } from "vux";
-import HotWord from "@/components/HotWord/index.vue";
-import SongItem from "@/components/SongItem/index.vue";
+import Trending from "@/components/searchTab/trending.vue";
+import Song from "@/components/song.vue";
 
 export default {
   data() {
@@ -42,8 +43,8 @@ export default {
   },
   components: {
     XInput,
-    HotWord,
-    SongItem
+    Trending,
+    Song,
   },
   computed: {
     ...mapGetters(["searchResult"])

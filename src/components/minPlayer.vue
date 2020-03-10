@@ -1,3 +1,4 @@
+// 底部迷你播放器
 <template>
   <div class="btm_player">
     <span class="play_btn" :class="{stop_btn: isStop}" @click="changeMusic"></span>
@@ -18,6 +19,7 @@
 <script>
 import { mapState } from "vuex";
 import { XProgress } from "vux";
+
 export default {
   data: () => ({
     percent: 0,
@@ -53,7 +55,7 @@ export default {
 .btm_player {
   height: 53px;
   width: 100vw;
-  background: url("./playbar.png") repeat-x;
+  background: url("~@/assets/playbar.png") repeat-x;
 }
 .musicInfo {
   position: relative;
@@ -88,7 +90,7 @@ export default {
   top: 2vw;
   width: 36px;
   height: 36px;
-  background: url("./playbar.png") no-repeat;
+  background: url("~@/assets/playbar.png") no-repeat;
   background-position: 0 -165px;
 }
 .stop_btn{

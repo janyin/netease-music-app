@@ -4,7 +4,7 @@ import Router from 'vue-router';
 Vue.use(Router)
 
 const home = r => require.ensure([], () => r(require('./page/home')), 'home');
-const songList = r => require.ensure([], () => r(require('./page/songList')), 'songList');
+const playList = r => require.ensure([], () => r(require('./page/playList')), 'playList');
 const player = r => require.ensure([], () => r(require('./page/player')), 'player');
 
 export default new Router({
@@ -17,6 +17,6 @@ export default new Router({
         component: player
     }, {
         path: '/playlist/detail',
-        component: songList //歌单页面
+        component: playList //歌单页面
     }, ]
 })

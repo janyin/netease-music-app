@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-top></home-top>
+    <Header></Header>
     <keep-alive>
       <component :is="tabName"></component>
     </keep-alive>
@@ -8,20 +8,20 @@
 </template>
 
 <script>
-import HomeTop from "@/components/HomeTop/index.vue";
-import TabIndex from "@/components/TabIndex/index.vue";
-import TabRank from "@/components/TabRank/index.vue";
-import TabSearch from "@/components/TabSearch/index.vue";
+import Header from "@/components/header.vue";
+import IndexTab from "@/components/indexTab/index.vue";
+import RankTab from "@/components/rankTab/index.vue";
+import SearchTab from "@/components/searchTab/index.vue";
 
 export default {
   data: () => ({
-    tabName: "TabIndex"
+    tabName: "IndexTab"
   }),
   components: {
-    HomeTop,
-    TabIndex,
-    TabRank,
-    TabSearch
+    Header,
+    IndexTab,
+    RankTab,
+    SearchTab,
   }
 }
 </script>

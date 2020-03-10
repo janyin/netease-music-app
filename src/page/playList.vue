@@ -25,18 +25,18 @@
     </section>
     <div class="list-song">
       <h3>歌曲列表</h3>
-      <song-item v-for="item in listDetail.music" :key="item.id" :music="item"></song-item>
+      <Song v-for="item in listDetail.music" :key="item.id" :music="item"></Song>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import SongItem from "@/components/SongItem/index.vue";
+import Song from "@/components/song.vue";
 
 export default {
   components: {
-    SongItem
+    Song
   },
   computed: {
     ...mapGetters(["listDetail"]),
@@ -55,5 +55,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../styles/playlist_page.css";
+@import "~@/styles/playlist_page.css";
 </style>
