@@ -2,7 +2,7 @@
 <template>
   <div>
     <div class="search">
-      <img class="find" src="@/assets/find.svg" alt="find">
+      <img class="find" src="@/assets/find.svg" alt="find" />
       <x-input
         placeholder="搜索歌曲、歌手、专辑"
         v-model="searchText"
@@ -11,7 +11,7 @@
         @on-change="change"
       ></x-input>
     </div>
-    <Trending v-if="isWord" @hot-search="search"></Trending>
+    <Trending v-if="isWord" @hot-search="search" :hotWord="hotWord"></Trending>
     <div v-else>
       <section v-if="error">
         <h1>暂无搜索结果</h1>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { getSearchSong, getWord } from "@/api/getData";
 import { XInput } from "vux";
 import Trending from "@/components/searchTab/trending.vue";
 import Song from "@/components/song.vue";
@@ -38,44 +38,67 @@ export default {
       searchText: "",
       isWord: false,
       loading: true,
-      error: false
+      error: false,
+      searchResult: [],
+      hotWord: [],
     };
   },
   components: {
     XInput,
     Trending,
-    Song,
-  },
-  computed: {
-    ...mapGetters(["searchResult"])
+    Song
   },
   methods: {
-    ...mapActions(["getSearchResult", "getTrendingWord"]),
-    search: function(value) {
+    async search(data) {
       this.isWord = false;
-      this.getSearchResult(value)
-        .then(() => {
-          this.searchText = value;
-          this.loading = false;
-        })
-        .catch(() => {
-          this.searchText = value;
-          this.error = true;
-        });
+      try {
+        let res = await this.getSearchResult(data);
+        this.searchResult = res;
+        this.searchText = data;
+        this.loading = false;
+      } catch (error) {
+        this.searchText = data;
+        this.error = true;
+      }
     },
-    clear: function() {
+    async getSearchResult(data) {
+      const word = data.trim();
+      let response = await getSearchSong(word);
+      let song = response.data.result.songs;
+
+      let searchResultList = song.map(function(currentValue) {
+        let artistsName = "";
+        if (currentValue.artists.length >= 2) {
+          artistsName =
+            currentValue.artists[0].name + "/" + currentValue.artists[1].name;
+        } else {
+          artistsName = currentValue.artists[0].name;
+        }
+        let obj = {
+          id: currentValue.id,
+          title: currentValue.name,
+          alias: currentValue.alias[0],
+          artists: artistsName,
+          album: currentValue.album.name
+        };
+        return obj;
+      });
+
+      return searchResultList;
+    },
+    clear() {
       this.isWord = true;
     },
-    change: function(value) {
+    change(value) {
       if (value === "") {
         this.isWord = true;
       }
     }
   },
-  created() {
-    this.getTrendingWord().then(() => {
-      this.isWord = true;
-    });
+  async created() {
+    let response = await getWord();
+    this.hotWord = response.data.result.hots;
+    this.isWord = true;
   }
 };
 </script>

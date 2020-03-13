@@ -5,32 +5,32 @@
     </keep-alive>
     <Loading :show="isLoad" :text="loadText"></Loading>
     <Toast text="歌曲暂无版权" type="cancel" :time="1000" :value="isToast" @on-hide="totast"></Toast>
-    <MinPlayer v-if="isPlayer" class="player"></MinPlayer>
+    <MiniPlayer v-show="isMiniPlayer" ref="miniPlayer"></MiniPlayer>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import { Loading, Toast } from "vux";
-import MinPlayer from "@/components/minPlayer.vue";
+import MiniPlayer from "@/components/miniPlayer.vue";
 
 export default {
   data() {
     return {
-      loadText: "加载中...",
+      loadText: "加载中..."
     };
   },
   computed: {
-    ...mapGetters(["isLoad", "isPlayer", "isToast"])
+    ...mapGetters(["isLoad", "isMiniPlayer", "isToast"])
   },
   methods: {
     ...mapMutations(["setToast"]),
-    totast(){
+    totast() {
       this.setToast(false);
     }
   },
   components: {
-    MinPlayer,
+    MiniPlayer,
     Loading,
     Toast
   }
@@ -52,13 +52,15 @@ a {
   font: 14px/1.5 Helvetica, sans-serif;
   color: #333;
 }
-.player {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 9999;
-}
 .weui-progress__inner-bar {
   background: #d43c33 !important;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  width: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 </style>

@@ -22,41 +22,73 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
 import Song from "@/components/song.vue";
+import { getRank } from "@/api/getData";
 
 export default {
   data() {
     return {
       loading: true,
-      error: false
-    }
+      error: false,
+      rank: [],
+    };
   },
   components: {
     Song
   },
   computed: {
-    ...mapGetters(["rank"]),
-    getTime(){
+    getTime() {
       let d = new Date();
-      let month =  d.getMonth();
+      let month = d.getMonth();
       let day = d.getDate();
-      return `${month + 1 }月${day}日`;
+      return `${month + 1}月${day}日`;
     }
   },
   methods: {
-    ...mapActions(["getRankList"])
-  },
-  created() {
-    this.getRankList()
-      .then(() => {
-        this.loading = false;
-      })
-      .catch(() => {
-        this.error = true;
+    parseData(response) {
+      let song = response.data.playlist.tracks.slice(0, 20);
+
+      let rankListData = song.map(function(currentValue, index) {
+        let artistsName = "";
+        if (currentValue.ar.length >= 2) {
+          //最多两个歌手名称
+          artistsName = currentValue.ar[0].name + "/" + currentValue.ar[1].name;
+        } else {
+          artistsName = currentValue.ar[0].name;
+        }
+        let obj = {
+          id: currentValue.id,
+          title: currentValue.name,
+          alias: currentValue.alia[0],
+          artists: artistsName,
+          album: currentValue.al.name,
+          rank: index + 1
+        };
+        if (index <= 2) {
+          //前三歌曲加粗
+          obj.color = true;
+        }
+        if (index <= 8) {
+          //前9歌曲序号加0
+          obj.rank = "0" + obj.rank;
+        }
+        return obj;
       });
+
+      return rankListData;
+    }
+  },
+  async created() {
+    try {
+      let response = await getRank();
+      this.rank = this.parseData(response);
+    } catch (err) {
+      this.error = true;
+    } finally {
+      this.loading = false;
+    }
   }
-}
+};
 </script>
 
 <style scoped>

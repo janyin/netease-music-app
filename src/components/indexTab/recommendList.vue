@@ -8,10 +8,10 @@
           class="remd_li"
           v-for="item in remdList.one"
           :key="item.id"
-          @click="listDetail(item)"
+          @click="gotoListDetail(item)"
         >
           <div class="list-img">
-            <img :src="item.imgUrl" alt="pic">
+            <img v-lazy="item.imgUrl" alt="pic" />
             <span>{{ item.play }}</span>
           </div>
           <p class="remd-text">{{ item.name }}</p>
@@ -23,10 +23,10 @@
           class="remd_li"
           v-for="item in remdList.two"
           :key="item.id"
-          @click="listDetail(item)"
+          @click="gotoListDetail(item)"
         >
           <div class="list-img">
-            <img :src="item.imgUrl" alt="1">
+            <img v-lazy="item.imgUrl" alt="1" />
             <span>{{ item.play }}</span>
           </div>
           <p class="remd-text">{{ item.name }}</p>
@@ -37,47 +37,75 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from "vuex";
+import { mapActions, mapMutations } from "vuex";
+import { getRemd } from "@/api/getData";
 
 export default {
   data() {
     return {
-      loading: true
-    }
+      loading: true,
+      remdList: "",
+      currentID: "",
+    };
   },
   methods: {
-    ...mapActions(["getRemdSongList", "getListDetail"]),
+    ...mapActions(["getListDetail"]),
     ...mapMutations(["setLoad"]),
-    listDetail: function(item) {
-      this.setLoad(true);
-      this.getListDetail(item.id)
-        .then(() => {
+    async gotoListDetail(item) {
+      if (this.currentID != item.id) {
+        this.setLoad(true);
+        try {
+          let res = await this.getListDetail(item.id);
+          this.currentID = item.id;
           this.$router.push({
             path: "/playlist/detail",
             query: { id: item.id }
           });
-        })
-        .catch(() => {
+        } catch (err) {
           alert("请求服务器错误");
-        })
-        .finally(() => {
+        } finally {
           this.setLoad(false);
+        }
+      } else {
+        this.$router.push({
+          path: "/playlist/detail",
+          query: { id: item.id }
         });
+      }
+    },
+    parseData(response) {
+      let result = response.data.result.slice(0, 6).map(function(currentValue) {
+        let obj = {
+          id: currentValue.id,
+          name: currentValue.name,
+          imgUrl: currentValue.picUrl
+        };
+        let temp = parseInt(currentValue.playCount) + "";
+        if (temp.length >= 6) {
+          obj.play = temp[0] + temp[1] + "万";
+        } else {
+          obj.play = temp;
+        }
+        return obj;
+      });
+      return {
+        one: result.slice(0, 3),
+        two: result.slice(3)
+      };
     }
   },
-  computed: {
-    ...mapGetters(["remdList"])
-  },
-  created() {
-    this.getRemdSongList()
-      .then(() => {
-        this.loading = false;
-      })
-      .catch(() => {
-        this.loading = true;
-      });
+  async created() {
+    try {
+      let response = await getRemd();
+      this.remdList = this.parseData(response);
+      this.loading = false;
+    } catch (err) {
+      console.log(err);
+    } finally {
+      this.loading = false;
+    }
   }
-}
+};
 </script>
 
 <style>

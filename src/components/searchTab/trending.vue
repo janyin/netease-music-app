@@ -15,11 +15,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-  computed: {
-    ...mapGetters(["hotWord"])
+  props:{
+    hotWord: {
+      type: Array,
+      required: true,
+    }
   }
 };
 </script>

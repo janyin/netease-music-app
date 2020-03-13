@@ -1,9 +1,9 @@
 // 底部迷你播放器
 <template>
   <div class="btm_player">
-    <span class="play_btn" :class="{stop_btn: isStop}" @click="changeMusic"></span>
+    <span class="play_icon" :class="{stop_btn: !playerStatus}" @click="changePlayerStatus"></span>
     <div class="musicInfo">
-      <img :src="currentMusic.imgUrl" alt="歌曲图片" />
+      <img v-lazy="currentMusic.imgUrl" alt="歌曲图片" @click="gotoPlayerPage" />
       <p>
         <span>{{ currentMusic.song }}</span> -
         <span>{{ currentMusic.singer }}</span>
@@ -12,36 +12,51 @@
         <x-progress :percent="percent" :show-cancel="false"></x-progress>
       </div>
     </div>
-    <audio :src="currentMusic.url" autoplay ref="player" @timeupdate="getPercent">你的浏览器暂时不支持H5播放</audio>
+    <audio :src="currentMusic.url" autoplay @timeupdate="timeupdate" ref="player">你的浏览器暂时不支持H5播放</audio>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import { XProgress } from "vux";
 
 export default {
-  data: () => ({
-    percent: 0,
-    isStop: false,
-  }),
+  data() {
+    return {
+      duration: 0
+    };
+  },
   computed: {
-    ...mapState(["currentMusic"])
+    ...mapGetters(["currentMusic", "currentTime", "playerStatus"]),
+    percent() {
+      return Number(((this.currentTime / this.duration) * 100).toFixed(2));
+    }
   },
   methods: {
-    getPercent() {
-      let currentTime = this.$refs.player.currentTime;
-      let duration = this.$refs.player.duration;
-      this.percent = Number(((currentTime / duration) * 100).toFixed(2));
+    ...mapMutations([
+      "setLoad",
+      "setCurrentTime",
+      "changePlayerStatus",
+      "setPlayer"
+    ]),
+    timeupdate(e) {
+      this.duration = e.target.duration;
+      this.setCurrentTime(e.target.currentTime);
     },
-    changeMusic(){
+    gotoPlayerPage() {
+      this.setPlayer(false);
+      this.$router.push({
+        path: "/player"
+      });
+    }
+  },
+  watch: {
+    playerStatus(status) {
       let audio = this.$refs.player;
-      if(audio.paused){
+      if (status) {
         audio.play();
-        this.isStop = false;
-      }else{
+      } else {
         audio.pause();
-        this.isStop = true;
       }
     }
   },
@@ -53,6 +68,10 @@ export default {
 
 <style scoped>
 .btm_player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
   height: 53px;
   width: 100vw;
   background: url("~@/assets/playbar.png") repeat-x;
@@ -84,7 +103,7 @@ export default {
   left: 15vw;
   width: 60vw;
 }
-.play_btn{
+.play_icon {
   position: absolute;
   left: 4%;
   top: 2vw;
@@ -93,7 +112,7 @@ export default {
   background: url("~@/assets/playbar.png") no-repeat;
   background-position: 0 -165px;
 }
-.stop_btn{
+.stop_btn {
   background-position: 0 -204px;
 }
 </style>

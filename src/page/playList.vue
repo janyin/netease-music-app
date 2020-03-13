@@ -7,7 +7,7 @@
       </div>
       <div class="list-head-content">
         <div class="lhc-img">
-          <img :src="listDetail.imgUrl" alt="pic">
+          <img v-lazy="listDetail.imgUrl" alt="pic">
           <span class="s-icon">歌单</span>
         </div>
         <div class="lhc-info">
@@ -42,7 +42,7 @@ export default {
     ...mapGetters(["listDetail"]),
     bgStyle() {
       return {
-        backgroundImage: "url(" + this.listDetail.imgUrl + ")"
+        backgroundImage: `url(${this.listDetail.imgUrl})`
       }
     }
   },

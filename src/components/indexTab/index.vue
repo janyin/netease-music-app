@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { getNewSong } from "@/api/getData";
 import RecommendList from "@/components/indexTab/recommendList.vue";
 import Song from "@/components/song.vue";
 import Footer from "@/components/indexTab/footer.vue";
@@ -31,7 +31,7 @@ export default {
       loading: true,
       data: [],
       error: false
-    }
+    };
   },
   components: {
     RecommendList,
@@ -39,19 +39,43 @@ export default {
     Footer
   },
   methods: {
-    ...mapActions(["getNewSongList"])
-  },
-  created() {
-    this.getNewSongList()
-      .then(() => {
-        this.loading = false;
-        this.data = this.$store.getters.newSong;
-      })
-      .catch(() => {
-        this.error = true;
+    parseData(response) {
+      let result = response.data.result.map(function(currentValue) {
+        let artistsName = "";
+
+        if (currentValue.song.artists.length >= 2) {
+          artistsName =
+            currentValue.song.artists[0].name +
+            "/" +
+            currentValue.song.artists[1].name;
+        } else {
+          artistsName = currentValue.song.artists[0].name;
+        }
+
+        let obj = {
+          id: currentValue.id,
+          title: currentValue.name,
+          artists: artistsName,
+          album: currentValue.song.album.name
+        };
+        return obj;
       });
+
+      return result;
+    }
+  },
+  async created() {
+    try {
+      let response = await getNewSong();
+      this.loading = false;
+      this.data = this.parseData(response);
+    } catch (err) {
+      this.error = true;
+    } finally {
+      this.loading = false;
+    }
   }
-}
+};
 </script>
 
 <style scoped>

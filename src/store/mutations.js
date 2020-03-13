@@ -1,39 +1,29 @@
-import * as types from './mutation-types'
-
 const mutations = {
-    [types.SET_RANK](state, rank) { //排行榜
-        state.rank = rank
+    setLoad(state, show) { //设置loading组件是否显示
+        state.isLoad = show;
     },
-    [types.SET_NEWSONG](state, newSong) { //最新音乐
-        state.newSong = newSong
+    setToast(state, show) { //设置toast组件是否显示
+        state.isToast = show;
     },
-    [types.SET_REMDSONGLIST](state, remdList) { //推荐歌单
-        state.remdList = remdList
+    setCurrentMusic(state, data) { //设置当前播放音乐数据
+        state.currentMusic = data;
     },
-    [types.SET_HOTWORD](state, hotWord) { //搜索热词
-        state.hotWord = hotWord
+    setPlayer(state, show) { //设置播放器是否显示
+        state.isMiniPlayer = show;
     },
-    [types.SET_SEARCH](state, serachResult) { //搜索结果
-        state.searchResult = serachResult
+    setListDetail(state, data) { //设置歌单页面数据
+        state.listDetail = data;
     },
-    [types.SET_PLAYURL](state, url) { //设置播放歌曲url
-        state.currentPlayUrl = url
+    setCurrentTime(state, data) { //设置播放进度
+        state.currentTime = data;
     },
-    [types.SET_LISTDETAIL](state, obj) { //设置歌单详情
-        state.listDetail = obj;
-    },
-    [types.SET_CURRENTMUSIC](state, obj) { //设置当前播放音乐信息
-        state.currentMusic = obj;
-    },
-    setLoad(state, val) { //设置loading组件是否显示
-        state.isLoad = val
-    },
-    setToast(state, val) { //设置toast组件是否显示
-        state.isToast = val
-    },
-    setPlayer(state, val) { //设置播放器是否显示
-        state.isPlayer = val
-    },
+    changePlayerStatus(state) { //设置播放状态
+        if (state.playerStatus) {
+            state.playerStatus = false;
+        } else {
+            state.playerStatus = true;
+        }
+    }
 };
 
 export default mutations

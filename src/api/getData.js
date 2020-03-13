@@ -46,3 +46,8 @@ export const getMusicDetail = (id) => axios.get(`${HOST}/song/detail?ids=${id}`)
  * 检测歌曲是否可播放？（版权/会员限制）
  */
 export const checkMusic = (id) => axios.get(`${HOST}/check/music?id=${id}`);
+
+/**
+ * 获取歌曲歌词
+ */
+export const getLrc = (id) => axios.get(`${HOST}/lyric?id=${id}`);
