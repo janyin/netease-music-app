@@ -38,6 +38,7 @@ export default {
       try{
         let res = await this.getMusicData(music);
         this.setPlayer(true);
+        this.$store.state.playerStatus = true;
       }catch (err){
         this.setToast(true);
       }finally{

@@ -23,6 +23,7 @@ const mutations = {
         } else {
             state.playerStatus = true;
         }
+
     }
 };
 

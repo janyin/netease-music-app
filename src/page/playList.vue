@@ -20,7 +20,7 @@
         <em class="tag" v-for="tag in listDetail.tags" :key="tag">{{ tag }}</em>
       </div>
       <div class="info-intro" v-if="listDetail.des">
-        <span>简介：{{ listDetail.des }}</span>
+        <span>简介：{{ listDetail.des.substring(0, 100) }} <span v-if="listDetail.des.length > 100">......</span></span>
       </div>
     </section>
     <div class="list-song">

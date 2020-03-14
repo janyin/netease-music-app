@@ -45,7 +45,7 @@ export default {
     return {
       loading: true,
       remdList: "",
-      currentID: "",
+      currentID: ""
     };
   },
   methods: {
@@ -99,8 +99,8 @@ export default {
       let response = await getRemd();
       this.remdList = this.parseData(response);
       this.loading = false;
-    } catch (err) {
-      console.log(err);
+    } catch {
+      alert("服务器错误，请重试！");
     } finally {
       this.loading = false;
     }

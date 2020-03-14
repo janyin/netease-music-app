@@ -12,7 +12,7 @@
         <x-progress :percent="percent" :show-cancel="false"></x-progress>
       </div>
     </div>
-    <audio :src="currentMusic.url" autoplay @timeupdate="timeupdate" ref="player">你的浏览器暂时不支持H5播放</audio>
+    <audio :src="currentMusic.url" loop autoplay @timeupdate="timeupdate" ref="player">你的浏览器暂时不支持H5播放</audio>
   </div>
 </template>
 

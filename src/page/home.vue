@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <Header></Header>
-    <keep-alive>
-      <component :is="tabName"></component>
-    </keep-alive>
-  </div>
+    <div>
+      <Header></Header>
+      <keep-alive>
+        <component :is="tabName"></component>
+      </keep-alive>
+    </div>
 </template>
 
 <script>
