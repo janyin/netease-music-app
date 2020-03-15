@@ -8,12 +8,11 @@
 
 ## 在线预览效果
 
-* PC端请使用Chrome手机模式;手机扫码;
+* PC端请使用Chrome手机模式[PC端点我预览][1];手机扫下面二维码;
 
  > ![二维码](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/qrcode.png)
  
  ---
- > [PC端点我预览][1]
 
 ## 用到的部分技术
 
@@ -39,13 +38,11 @@
 
 ## 效果截图
 
->![首页](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/1.png)
+* ![首页](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/1.png)
+![播放](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/2.png)
 
->![播放](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/2.png)
-
->![评论](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/3.png)
-
->![歌单](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/4.png)
+* ![评论](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/3.png)
+![歌单](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/4.png)
 
 [1]: http://music.wanegbt.cn/
 [2]: https://binaryify.github.io/NeteaseCloudMusicApi
