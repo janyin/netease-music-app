@@ -10,7 +10,7 @@
 
 * PC端请使用Chrome手机模式;手机扫码;
 
- > ![二维码](https://github.com/janyin/vue-wangyiyun-music/screenshot/qrcode.png)
+ > ![二维码](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/qrcode.png)
  
  ---
  > [PC端点我预览][1]
@@ -39,13 +39,13 @@
 
 ## 效果截图
 
->![首页](https://github.com/janyin/vue-wangyiyun-music/screenshot/1.png)
+>![首页](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/1.png)
 
->![播放](https://github.com/janyin/vue-wangyiyun-music/screenshot/2.png)
+>![播放](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/2.png)
 
->![评论](https://github.com/janyin/vue-wangyiyun-music/screenshot/3.png)
+>![评论](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/3.png)
 
->![歌单](https://github.com/janyin/vue-wangyiyun-music/screenshot/4.png)
+>![歌单](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/4.png)
 
 [1]: http://music.wanegbt.cn/
 [2]: https://binaryify.github.io/NeteaseCloudMusicApi
