@@ -17,18 +17,18 @@
 }
 
 .link_comment {
-    position: absolute;
-    left: 10%;
+    position: fixed;
+    left: 25%;
     bottom: 3vw;
-    width: 80%;
-    height: 40px;
+    width: 50%;
+    height: 30px;
     border: 1px solid #ff3a3a;
     border-radius: 40px;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     background: #ff3a3a;
     color: #fff;
-    line-height: 40px;
+    line-height: 30px;
 }
 
 .lrc_item {
@@ -121,7 +121,6 @@
     z-index: 1;
     position: relative;
     width: 100vw;
-    height: 100vh;
     padding-top: 80px;
     box-sizing: border-box;
 }
@@ -149,10 +148,9 @@
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: auto 100%;
-    transform: scale(1.5);
-    transform-origin: center top;
-    -webkit-filter: blur(20px);
-    filter: blur(20px);
+    transform: scale(1.2);
+    transform-origin: center;
+    filter: blur(10px);
     position: fixed;
     left: 0;
     right: 0;
@@ -211,73 +209,13 @@
     top: 7px;
     left: 0;
 }
-
-.animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+.comment_wrap{
+    margin: 10vw 0;
+    padding: 0 1vw;
 }
-
-@-webkit-keyframes slideOutDown {
-    from {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-
-    to {
-        visibility: hidden;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-}
-
-@keyframes slideOutDown {
-    from {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-
-    to {
-        visibility: hidden;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-}
-
-.slideOutDown {
-    -webkit-animation-name: slideOutDown;
-    animation-name: slideOutDown;
-}
-
-
-@-webkit-keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.slideInUp {
-    -webkit-animation-name: slideInUp;
-    animation-name: slideInUp;
+.comment_wrap p{
+    margin: 3vw 0;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
 }

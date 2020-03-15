@@ -17,7 +17,9 @@ import MiniPlayer from "@/components/miniPlayer.vue";
 export default {
   data() {
     return {
-      loadText: "加载中..."
+      loadText: "加载中...",
+      enterName: "",
+      leaveName: ""
     };
   },
   computed: {
@@ -54,13 +56,5 @@ a {
 }
 .weui-progress__inner-bar {
   background: #d43c33 !important;
-}
-.clearfix:after {
-  content: ".";
-  display: block;
-  width: 0;
-  height: 0;
-  clear: both;
-  visibility: hidden;
 }
 </style>

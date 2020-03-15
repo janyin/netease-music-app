@@ -36,6 +36,7 @@
       "eslint:recommended"
     ],
     "rules": {
+      "no-console": "off",
       "no-unused-vars": 0
     },
     "parserOptions": {

@@ -51,3 +51,8 @@ export const checkMusic = (id) => axios.get(`${HOST}/check/music?id=${id}`);
  * 获取歌曲歌词
  */
 export const getLrc = (id) => axios.get(`${HOST}/lyric?id=${id}`);
+
+/**
+ * 获取歌曲热门评论
+ */
+export const getComment = (id) => axios.get(`${HOST}/comment/hot?id=${id}&type=0`);

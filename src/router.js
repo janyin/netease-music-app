@@ -3,9 +3,9 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
-const home = r => require.ensure([], () => r(require('./page/home')), 'home');
-const playList = r => require.ensure([], () => r(require('./page/playList')), 'playList');
-const player = r => require.ensure([], () => r(require('./page/player')), 'player');
+const home = () => import('@/page/home');
+const playList = () => import('@/page/playList');
+const player = () => import('@/page/player');
 
 export default new Router({
     routes: [{
