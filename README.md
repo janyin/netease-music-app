@@ -4,15 +4,16 @@
 * 主要功能有：推荐歌单、搜索歌曲、歌词滚动等;
 
 > 网易云音乐移动官网是使用React构建的, 虽然音乐播放器烂大街了，但心血来潮还是写了一个Vue版本,界面看起来和官网没多大差别;  
->[API来源][7]
+>[API来源][2]
 
 ## 在线预览效果
 
 * PC端请使用Chrome手机模式;手机扫码;
 
- > [二维码][1]
+ > ![二维码](https://github.com/janyin/vue-wangyiyun-music/screenshot/qrcode.png)
+ 
  ---
- > [PC端点我预览][2]
+ > [PC端点我预览][1]
 
 ## 用到的部分技术
 
@@ -38,15 +39,13 @@
 
 ## 效果截图
 
->[首页][3]
->[播放][4]
->[评论][5]
->[歌单][6]
+>![首页](https://github.com/janyin/vue-wangyiyun-music/screenshot/1.png)
 
-[1]: https://github.com/janyin/vue-wangyiyun-music/screenshot/qrcode.png
-[2]: http://music.wanegbt.cn/
-[3]: https://github.com/janyin/vue-wangyiyun-music/screenshot/1.png
-[4]: https://github.com/janyin/vue-wangyiyun-music/screenshot/2.png
-[5]: https://github.com/janyin/vue-wangyiyun-music/screenshot/3.png
-[6]: https://github.com/janyin/vue-wangyiyun-music/screenshot/4.png
-[7]: https://binaryify.github.io/NeteaseCloudMusicApi
+>![播放](https://github.com/janyin/vue-wangyiyun-music/screenshot/2.png)
+
+>![评论](https://github.com/janyin/vue-wangyiyun-music/screenshot/3.png)
+
+>![歌单](https://github.com/janyin/vue-wangyiyun-music/screenshot/4.png)
+
+[1]: http://music.wanegbt.cn/
+[2]: https://binaryify.github.io/NeteaseCloudMusicApi
