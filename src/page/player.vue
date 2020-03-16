@@ -17,7 +17,7 @@
         <span class="play_btn" v-if="!playerStatus"></span>
       </div>
       <div class="song_info">
-        <p class="song_title">{{ currentMusic.song }} —— {{ currentMusic.singer }}</p>
+        <p class="song_title">{{ currentMusic.song }} — {{ currentMusic.singer }}</p>
         <div class="lrc_wrapper" ref="lrc">
           <div class="lrc_content">
             <p
@@ -75,14 +75,10 @@ export default {
       };
     }
   },
-  components: {
-    XButton,
-    Comment
-  },
   methods: {
-    ...mapMutations(["changePlayerStatus", "setPlayer"]),
+    ...mapMutations(["changePlayerStatus", "setMiniPlayer"]),
     goBack() {
-      this.setPlayer(true);
+      this.setMiniPlayer(true);
       this.isComment = false;
       this.$router.back();
     },
@@ -109,7 +105,7 @@ export default {
     },
     parseCommentDate(time) {
       let date = new Date(Number(time));
-      let year = date.getFullYear() == 2020 ? '' : `${date.getFullYear()}年`;
+      let year = date.getFullYear() == 2020 ? "" : `${date.getFullYear()}年`;
       return `${year}${date.getMonth() + 1}月${date.getDate()}日`;
     }
   },
@@ -125,10 +121,14 @@ export default {
     } else {
       this.scroll.refresh();
     }
-    if(this.commentId == this.currentMusic.id){
+    if (this.commentId == this.currentMusic.id) {
       this.isComment = true;
     }
   },
+  components: {
+    XButton,
+    Comment
+  }
 };
 </script>
 

@@ -32,12 +32,12 @@ export default {
   },
   methods: {
     ...mapActions(["getMusicData"]),
-    ...mapMutations(["setLoad", "setToast", "setPlayer"]),
+    ...mapMutations(["setLoad", "setToast", "setMiniPlayer"]),
     async playMusic(music) {
       this.setLoad(true);
       try{
         let res = await this.getMusicData(music);
-        this.setPlayer(true);
+        this.setMiniPlayer(true);
         this.$store.state.playerStatus = true;
       }catch (err){
         this.setToast(true);

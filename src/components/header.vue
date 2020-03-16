@@ -51,7 +51,7 @@ export default {
     left: 0;
     z-index: 100;
     width: 100%;
-    height: 108px;
+    height: inherit;
 }
 .top-fix{
     display: flex;

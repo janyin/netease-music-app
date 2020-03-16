@@ -7,17 +7,15 @@
         <div class="hot-time">更新日期：{{ getTime }}</div>
       </div>
     </div>
-    <div>
-      <section v-if="error">
-        <h1>加载失败！</h1>
-      </section>
-      <section v-else style="padding-bottom: 68px">
-        <div v-if="loading">loading...</div>
-        <div v-else>
-          <Song v-for="item in rank" :key="item.id" :music="item"></Song>
-        </div>
-      </section>
-    </div>
+    <section v-if="error">
+      <h1>加载失败！</h1>
+    </section>
+    <section v-else style="padding-bottom: 68px">
+      <div v-if="loading">loading...</div>
+      <div v-else>
+        <Song v-for="item in rank" :key="item.id" :music="item"></Song>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -30,7 +28,7 @@ export default {
     return {
       loading: true,
       error: false,
-      rank: [],
+      rank: []
     };
   },
   components: {
@@ -82,7 +80,7 @@ export default {
     try {
       let response = await getRank();
       this.rank = this.parseData(response);
-    } catch (err) {
+    } catch {
       this.error = true;
     } finally {
       this.loading = false;

@@ -5,7 +5,7 @@ const state = {
     isMiniPlayer: false, //mini播放器是否显示
     listDetail: {}, //歌单页面数据
     currentTime: 0, //当前播放进度
-    playerStatus: true, //当前播放状态
+    playerStatus: false, //当前播放状态
 };
 
 export default state

@@ -74,7 +74,7 @@ export default {
       }
     },
     parseData(response) {
-      let result = response.data.result.slice(0, 6).map(function(currentValue) {
+      let result = response.data.result.slice(0, 6).map((currentValue) => {
         let obj = {
           id: currentValue.id,
           name: currentValue.name,
@@ -98,7 +98,6 @@ export default {
     try {
       let response = await getRemd();
       this.remdList = this.parseData(response);
-      this.loading = false;
     } catch {
       alert("服务器错误，请重试！");
     } finally {

@@ -8,7 +8,7 @@ const mutations = {
     setCurrentMusic(state, data) { //设置当前播放音乐数据
         state.currentMusic = data;
     },
-    setPlayer(state, show) { //设置播放器是否显示
+    setMiniPlayer(state, show) { //设置播放器是否显示
         state.isMiniPlayer = show;
     },
     setListDetail(state, data) { //设置歌单页面数据

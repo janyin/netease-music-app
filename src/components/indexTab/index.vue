@@ -67,7 +67,6 @@ export default {
   async created() {
     try {
       let response = await getNewSong();
-      this.loading = false;
       this.data = this.parseData(response);
     } catch (err) {
       this.error = true;

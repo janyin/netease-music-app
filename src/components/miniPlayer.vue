@@ -34,17 +34,16 @@ export default {
   },
   methods: {
     ...mapMutations([
-      "setLoad",
       "setCurrentTime",
       "changePlayerStatus",
-      "setPlayer"
+      "setMiniPlayer"
     ]),
     timeupdate(e) {
       this.duration = e.target.duration;
       this.setCurrentTime(e.target.currentTime);
     },
     gotoPlayerPage() {
-      this.setPlayer(false);
+      this.setMiniPlayer(false);
       this.$router.push({
         path: "/player"
       });
