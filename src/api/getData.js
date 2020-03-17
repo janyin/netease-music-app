@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const HOST='http://175.24.85.20:3000'; /*API服务器地址*/
+const HOST='https://api.mtnhao.com'; /*API服务器地址*/
 
 /**
  * 搜索热词
