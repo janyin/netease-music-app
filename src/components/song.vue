@@ -35,18 +35,21 @@ export default {
     ...mapMutations(["setLoad", "setToast", "setMiniPlayer"]),
     async playMusic(music) {
       this.setLoad(true);
-      try{
+      try {
         let res = await this.getMusicData(music);
         this.setMiniPlayer(true);
         this.$store.state.playerStatus = true;
-      }catch (err){
+        this.$router.push({
+          path: "/player"
+        });
+      } catch (err) {
         this.setToast(true);
-      }finally{
+      } finally {
         this.setLoad(false);
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
