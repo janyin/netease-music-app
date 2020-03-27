@@ -37,8 +37,8 @@ export default {
       this.setLoad(true);
       try {
         let res = await this.getMusicData(music);
-        this.setMiniPlayer(true);
         this.$store.state.playerStatus = true;
+        this.setMiniPlayer(false);
         this.$router.push({
           path: "/player"
         });
