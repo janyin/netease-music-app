@@ -10,9 +10,7 @@
 
 ## 在线预览效果
 
-* PC端请使用Chrome手机模式[PC端点我预览][1];手机扫下面二维码;
-
- > ![二维码](https://github.com/janyin/vue-wangyiyun-music/blob/master/screenshot/qrcode.png)
+* PC端请使用Chrome手机模式[PC端点我预览][1];
 
  > <strong>如果喜欢可以右上角给个⭐Star⭐, 谢谢！</strong>
  ---
@@ -119,5 +117,5 @@
 
 </details>
 
-[1]: http://music.wanegbt.cn/
+[1]: https://vue-wangyiyun-music.now.sh/#/
 [2]: https://binaryify.github.io/NeteaseCloudMusicApi
