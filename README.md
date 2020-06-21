@@ -1,11 +1,10 @@
 # 基于vue的网易云音乐移动端web app
 
-# React版本项目：https://github.com/janyin/react-music-app
+# React版本：https://github.com/janyin/react-music-app
 
 * 项目技术都比较简单，适合新手拿来练手的入门级Vue开发实战项目;
 * 主要功能有：推荐歌单、搜索歌曲、歌词滚动等;
 
-> 网易云音乐移动官网是使用React构建的, 虽然音乐播放器烂大街了，但心血来潮还是写了一个Vue版本,界面看起来和官网没多大差别;  
 >[API来源][2]
 
 ## 在线预览效果
