@@ -15,7 +15,7 @@ export const getSearchSong = (word) => axios.get(`${HOST}/search?keywords=${word
 /**
  * 歌曲排行榜
  */
-export const getRank = () => axios.get(`${HOST}/top/list?idx=1`);
+export const getRank = () => axios.get(`${HOST}/playlist/detail?id=3778678`);
 
 /**
  * 推荐歌曲列表
