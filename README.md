@@ -39,7 +39,6 @@
 ## 效果截图
 
 * ![首页](https://i.loli.net/2020/10/20/WX4yJF7eRbQKwj1.png)
-  ![3.png](https://i.loli.net/2020/10/20/qDNhVkQ7xPGURw3.png)
 
 ## 项目目录
 
