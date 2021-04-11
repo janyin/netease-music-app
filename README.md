@@ -24,9 +24,9 @@
 - 使用 GitHub 镜像地址：https://github.com.cnpmjs.org 下载更快
 
 ```git
-git clone https://github.com.cnpmjs.org/janyin/vue-wangyiyun-music.git
+git clone https://github.com.cnpmjs.org/janyin/vue-music-app.git
 
-cd vue-wangyiyun-music
+cd vue-music-app
 
 npm install
 
