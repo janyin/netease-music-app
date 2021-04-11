@@ -12,7 +12,6 @@
 * PC端请使用Chrome手机模式[点我在线预览][1];
 
  > <strong>如果喜欢可以右上角给个⭐Star⭐, 谢谢！</strong>
- ---
 
 ## 用到的部分技术
 
@@ -23,9 +22,11 @@
 * 部分UI组件：Vux;
 
 ## 运行此项目
+
+  - 使用Git镜像地址：https://github.com.cnpmjs.org 下载更快
   
   ```git
-  git clone https://github.com/janyin/vue-wangyiyun-music.git
+  git clone https://github.com.cnpmjs.org/janyin/vue-wangyiyun-music.git
   
   cd vue-wangyiyun-music
   

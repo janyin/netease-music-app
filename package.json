@@ -24,7 +24,8 @@
     "less-loader": "^4.1.0",
     "vue-loader": "^14.2.4",
     "vue-template-compiler": "^2.6.11",
-    "vux-loader": "^1.2.9"
+    "vux-loader": "^1.2.9",
+    "prettier": "^2.2.1"
   },
   "eslintConfig": {
     "root": true,
