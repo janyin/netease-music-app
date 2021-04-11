@@ -20,19 +20,19 @@
 </template>
 
 <script>
-import Song from "@/components/song.vue";
-import { getRank } from "@/api/getData";
+import Song from '@/components/song.vue';
+import { getRank } from '@/api/getData';
 
 export default {
   data() {
     return {
       loading: true,
       error: false,
-      rank: []
+      rank: [],
     };
   },
   components: {
-    Song
+    Song,
   },
   computed: {
     getTime() {
@@ -40,17 +40,17 @@ export default {
       let month = d.getMonth();
       let day = d.getDate();
       return `${month + 1}月${day}日`;
-    }
+    },
   },
   methods: {
     parseData(response) {
       let song = response.data.playlist.tracks.slice(0, 20);
 
-      let rankListData = song.map(function(currentValue, index) {
-        let artistsName = "";
+      let rankListData = song.map(function (currentValue, index) {
+        let artistsName = '';
         if (currentValue.ar.length >= 2) {
           //最多两个歌手名称
-          artistsName = currentValue.ar[0].name + "/" + currentValue.ar[1].name;
+          artistsName = currentValue.ar[0].name + '/' + currentValue.ar[1].name;
         } else {
           artistsName = currentValue.ar[0].name;
         }
@@ -60,7 +60,7 @@ export default {
           alias: currentValue.alia[0],
           artists: artistsName,
           album: currentValue.al.name,
-          rank: index + 1
+          rank: index + 1,
         };
         if (index <= 2) {
           //前三歌曲加粗
@@ -68,13 +68,13 @@ export default {
         }
         if (index <= 8) {
           //前9歌曲序号加0
-          obj.rank = "0" + obj.rank;
+          obj.rank = '0' + obj.rank;
         }
         return obj;
       });
 
       return rankListData;
-    }
+    },
   },
   async created() {
     try {
@@ -85,7 +85,7 @@ export default {
     } finally {
       this.loading = false;
     }
-  }
+  },
 };
 </script>
 
@@ -101,7 +101,7 @@ export default {
 .hot-icon {
   width: 142px;
   height: 67px;
-  background-image: url("~@/assets/hot_icon.png");
+  background-image: url('~@/assets/hot_icon.png');
   background-position: -24px -30px;
   background-size: 166px 97px;
 }
@@ -122,11 +122,11 @@ export default {
   position: relative;
   padding-top: 38.9%;
   overflow: hidden;
-  background: url("~@/assets/hot_bg.jpg") no-repeat;
+  background: url('~@/assets/hot_bg.jpg') no-repeat;
   background-size: contain;
 }
 .hot-top:after {
-  content: " ";
+  content: ' ';
   position: absolute;
   left: 0;
   top: 0;

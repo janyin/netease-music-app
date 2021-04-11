@@ -4,36 +4,42 @@
       <router-view></router-view>
     </keep-alive>
     <Loading :show="isLoad" :text="loadText"></Loading>
-    <Toast text="歌曲暂无版权" type="cancel" :time="1000" :value="isToast" @on-hide="totast"></Toast>
+    <Toast
+      text="歌曲暂无版权"
+      type="cancel"
+      :time="1000"
+      :value="isToast"
+      @on-hide="totast"
+    ></Toast>
     <MiniPlayer v-show="isMiniPlayer" ref="miniPlayer"></MiniPlayer>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { Loading, Toast } from "vux";
-import MiniPlayer from "@/components/miniPlayer.vue";
+import { mapGetters, mapMutations } from 'vuex';
+import { Loading, Toast } from 'vux';
+import MiniPlayer from '@/components/miniPlayer.vue';
 
 export default {
   data() {
     return {
-      loadText: "加载中..."
+      loadText: '加载中...',
     };
   },
   computed: {
-    ...mapGetters(["isLoad", "isMiniPlayer", "isToast"])
+    ...mapGetters(['isLoad', 'isMiniPlayer', 'isToast']),
   },
   methods: {
-    ...mapMutations(["setToast"]),
+    ...mapMutations(['setToast']),
     totast() {
       this.setToast(false);
-    }
+    },
   },
   components: {
     MiniPlayer,
     Loading,
-    Toast
-  }
+    Toast,
+  },
 };
 </script>
 

@@ -6,7 +6,7 @@
         class="hot-word"
         v-for="item in hotWord"
         :key="item.first"
-        @click="$emit('hot-search',item.first)"
+        @click="$emit('hot-search', item.first)"
       >
         <a href="javascript:void(0);">{{ item.first }}</a>
       </li>
@@ -16,12 +16,12 @@
 
 <script>
 export default {
-  props:{
+  props: {
     hotWord: {
       type: Array,
       required: true,
-    }
-  }
+    },
+  },
 };
 </script>
 

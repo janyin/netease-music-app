@@ -19,7 +19,11 @@
       <section v-else>
         <div v-if="loading">Loading.....</div>
         <div v-else>
-          <Song v-for="item in searchResult" :key="item.id" :music="item"></Song>
+          <Song
+            v-for="item in searchResult"
+            :key="item.id"
+            :music="item"
+          ></Song>
         </div>
       </section>
     </div>
@@ -27,15 +31,15 @@
 </template>
 
 <script>
-import { getSearchSong, getWord } from "@/api/getData";
-import { XInput } from "vux";
-import Trending from "@/components/searchTab/trending.vue";
-import Song from "@/components/song.vue";
+import { getSearchSong, getWord } from '@/api/getData';
+import { XInput } from 'vux';
+import Trending from '@/components/searchTab/trending.vue';
+import Song from '@/components/song.vue';
 
 export default {
   data() {
     return {
-      searchText: "",
+      searchText: '',
       isWord: false,
       loading: true,
       error: false,
@@ -46,7 +50,7 @@ export default {
   components: {
     XInput,
     Trending,
-    Song
+    Song,
   },
   methods: {
     async search(data) {
@@ -66,11 +70,11 @@ export default {
       let response = await getSearchSong(word);
       let song = response.data.result.songs;
 
-      let searchResultList = song.map(function(currentValue) {
-        let artistsName = "";
+      let searchResultList = song.map(function (currentValue) {
+        let artistsName = '';
         if (currentValue.artists.length >= 2) {
           artistsName =
-            currentValue.artists[0].name + "/" + currentValue.artists[1].name;
+            currentValue.artists[0].name + '/' + currentValue.artists[1].name;
         } else {
           artistsName = currentValue.artists[0].name;
         }
@@ -79,7 +83,7 @@ export default {
           title: currentValue.name,
           alias: currentValue.alias[0],
           artists: artistsName,
-          album: currentValue.album.name
+          album: currentValue.album.name,
         };
         return obj;
       });
@@ -90,16 +94,16 @@ export default {
       this.isWord = true;
     },
     change(value) {
-      if (value === "") {
+      if (value === '') {
         this.isWord = true;
       }
-    }
+    },
   },
   async created() {
     let response = await getWord();
     this.hotWord = response.data.result.hots;
     this.isWord = true;
-  }
+  },
 };
 </script>
 

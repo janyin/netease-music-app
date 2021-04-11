@@ -20,33 +20,33 @@
 </template>
 
 <script>
-import { getNewSong } from "@/api/getData";
-import RecommendList from "@/components/indexTab/recommendList.vue";
-import Song from "@/components/song.vue";
-import Footer from "@/components/indexTab/footer.vue";
+import { getNewSong } from '@/api/getData';
+import RecommendList from '@/components/indexTab/recommendList.vue';
+import Song from '@/components/song.vue';
+import Footer from '@/components/indexTab/footer.vue';
 
 export default {
   data() {
     return {
       loading: true,
       data: [],
-      error: false
+      error: false,
     };
   },
   components: {
     RecommendList,
     Song,
-    Footer
+    Footer,
   },
   methods: {
     parseData(response) {
-      let result = response.data.result.map(function(currentValue) {
-        let artistsName = "";
+      let result = response.data.result.map(function (currentValue) {
+        let artistsName = '';
 
         if (currentValue.song.artists.length >= 2) {
           artistsName =
             currentValue.song.artists[0].name +
-            "/" +
+            '/' +
             currentValue.song.artists[1].name;
         } else {
           artistsName = currentValue.song.artists[0].name;
@@ -56,13 +56,13 @@ export default {
           id: currentValue.id,
           title: currentValue.name,
           artists: artistsName,
-          album: currentValue.song.album.name
+          album: currentValue.song.album.name,
         };
         return obj;
       });
 
       return result;
-    }
+    },
   },
   async created() {
     try {
@@ -73,7 +73,7 @@ export default {
     } finally {
       this.loading = false;
     }
-  }
+  },
 };
 </script>
 
@@ -92,7 +92,7 @@ export default {
   line-height: 20px;
 }
 .remd:after {
-  content: " ";
+  content: ' ';
   position: absolute;
   left: 0;
   top: 50%;

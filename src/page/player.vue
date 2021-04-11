@@ -9,7 +9,10 @@
         <div class="needle"></div>
         <div class="icon_center">
           <div class="song_img">
-            <div class="default_img rotateDiv" :class="{noRotate: !playerStatus}">
+            <div
+              class="default_img rotateDiv"
+              :class="{ noRotate: !playerStatus }"
+            >
               <img v-lazy="currentMusic.imgUrl" alt="歌曲图片" />
             </div>
           </div>
@@ -17,22 +20,30 @@
         <span class="play_btn" v-if="!playerStatus"></span>
       </div>
       <div class="song_info">
-        <p class="song_title">{{ currentMusic.song }} — {{ currentMusic.singer }}</p>
+        <p class="song_title">
+          {{ currentMusic.song }} — {{ currentMusic.singer }}
+        </p>
         <div class="lrc_wrapper" ref="lrc">
           <div class="lrc_content">
             <p
               class="lrc_item"
-              :class="{active_lrc: activeIndex === index}"
+              :class="{ active_lrc: activeIndex === index }"
               v-for="(item, index) in currentMusic.lyric"
               :key="index"
               ref="lrc_item"
-            >{{ item.content }}</p>
+            >
+              {{ item.content }}
+            </p>
           </div>
         </div>
       </div>
       <div v-if="isComment" class="comment_wrap">
         <p>⭐ 热门评论 ⭐</p>
-        <Comment v-for="(item, index) in comment" :key="index" :data="item"></Comment>
+        <Comment
+          v-for="(item, index) in comment"
+          :key="index"
+          :data="item"
+        ></Comment>
       </div>
       <div class="link_comment" v-else @click="gotoComment">查看歌曲评论</div>
     </div>
@@ -40,23 +51,23 @@
 </template>
 
 <script>
-import { XButton } from "vux";
-import BScroll from "better-scroll";
-import { mapMutations, mapGetters } from "vuex";
-import { getComment } from "@/api/getData";
-import Comment from "@/components/comment.vue";
+import { XButton } from 'vux';
+import BScroll from 'better-scroll';
+import { mapMutations, mapGetters } from 'vuex';
+import { getComment } from '@/api/getData';
+import Comment from '@/components/comment.vue';
 
 export default {
   data() {
     return {
-      scroll: "",
+      scroll: '',
       comment: [],
       isComment: false,
-      commentId: 0
+      commentId: 0,
     };
   },
   computed: {
-    ...mapGetters(["currentMusic", "currentTime", "playerStatus"]),
+    ...mapGetters(['currentMusic', 'currentTime', 'playerStatus']),
     activeIndex() {
       return this.currentMusic.lyric.findIndex((item, index, array) => {
         let nextLyric = array[index + 1];
@@ -71,12 +82,12 @@ export default {
     },
     bgStyle() {
       return {
-        backgroundImage: `url(${this.currentMusic.imgUrl})`
+        backgroundImage: `url(${this.currentMusic.imgUrl})`,
       };
-    }
+    },
   },
   methods: {
-    ...mapMutations(["changePlayerStatus", "setMiniPlayer"]),
+    ...mapMutations(['changePlayerStatus', 'setMiniPlayer']),
     goBack() {
       this.setMiniPlayer(true);
       this.isComment = false;
@@ -99,21 +110,21 @@ export default {
           likedCount: item.likedCount,
           username: item.user.nickname,
           avatarUrl: item.user.avatarUrl,
-          time: this.parseCommentDate(item.time)
+          time: this.parseCommentDate(item.time),
         };
       });
     },
     parseCommentDate(time) {
       let date = new Date(Number(time));
-      let year = date.getFullYear() == 2020 ? "" : `${date.getFullYear()}年`;
+      let year = date.getFullYear() == 2020 ? '' : `${date.getFullYear()}年`;
       return `${year}${date.getMonth() + 1}月${date.getDate()}日`;
-    }
+    },
   },
   watch: {
     activeIndex(newIndex) {
       let lrc_item = this.$refs.lrc_item;
       this.scroll.scrollToElement(lrc_item[newIndex], 200, 0, true);
-    }
+    },
   },
   activated() {
     if (!this.scroll) {
@@ -127,11 +138,11 @@ export default {
   },
   components: {
     XButton,
-    Comment
-  }
+    Comment,
+  },
 };
 </script>
 
 <style scoped>
-@import url("~@/styles/player.css");
+@import url('~@/styles/player.css');
 </style>

@@ -11,7 +11,7 @@
         </div>
         <div class="cmt_like">
           <span>{{ data.likedCount }}</span>
-          <i><img src="@/assets/like.svg" alt="点赞"></i>
+          <i><img src="@/assets/like.svg" alt="点赞" /></i>
         </div>
       </div>
       <div class="cmt_content">
@@ -26,9 +26,9 @@ export default {
   props: {
     data: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 
