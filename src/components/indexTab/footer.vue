@@ -16,7 +16,7 @@
 export default {
   methods: {
     gotoGithub() {
-      window.open('https://github.com/janyin/vue-wangyiyun-music', '_blank');
+      window.open('https://github.com/janyin/vue-music-app');
     },
   },
 };
