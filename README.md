@@ -1,7 +1,6 @@
 # 基于 vue 的网易云音乐移动端 web app
 
-# React 版本：https://github.com/janyin/react-music-app
-
+- React 版本：https://github.com/janyin/react-music-app
 - 项目技术都比较简单，适合新手拿来练手的入门级 Vue 开发实战项目;
 - 主要功能有：推荐歌单、搜索歌曲、歌词滚动等;
 - [API 来源][2]: https://binaryify.github.io/NeteaseCloudMusicApi
