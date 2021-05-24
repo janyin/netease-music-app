@@ -5,7 +5,7 @@
       <div class="top-fix">
         <img src="@/assets/logo.svg" alt="logo" class="topsvg" />
         <div class="topfr">
-          <span>Vue.js</span>
+          <span>Vue</span>
         </div>
       </div>
       <tab bar-active-color="#d43c33" active-color="#d43c33">
@@ -79,7 +79,7 @@ export default {
   color: #fff;
   font-size: 15px;
   border: 1px solid white;
-  border-radius: 37.5%/100%;
+  border-radius: 20px;
   cursor: pointer;
 }
 </style>

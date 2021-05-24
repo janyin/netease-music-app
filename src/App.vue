@@ -23,7 +23,7 @@ import MiniPlayer from '@/components/miniPlayer.vue';
 export default {
   data() {
     return {
-      loadText: '加载中...',
+      loadText: '加载中',
     };
   },
   computed: {

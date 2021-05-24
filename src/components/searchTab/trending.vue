@@ -37,7 +37,7 @@ export default {
   line-height: 32px;
   color: #333;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 37.5%/100%;
+  border-radius: 30px;
   cursor: pointer;
 }
 .hot-list {
