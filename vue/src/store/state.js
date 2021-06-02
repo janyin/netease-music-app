@@ -6,6 +6,6 @@ const state = {
   listDetail: {}, //歌单页面数据
   currentTime: 0, //当前播放进度
   playerStatus: false, //当前播放状态
-};
+}
 
-export default state;
+export default state

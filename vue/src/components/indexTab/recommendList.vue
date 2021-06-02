@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
-import { getRemd } from '@/api/getData';
+import { mapActions, mapMutations } from 'vuex'
+import { getRemd } from '@/api/getData'
 
 export default {
   data() {
@@ -46,31 +46,31 @@ export default {
       loading: true,
       remdList: '',
       currentID: '',
-    };
+    }
   },
   methods: {
     ...mapActions(['getListDetail']),
     ...mapMutations(['setLoad']),
     async gotoListDetail(item) {
       if (this.currentID != item.id) {
-        this.setLoad(true);
+        this.setLoad(true)
         try {
-          let res = await this.getListDetail(item.id);
-          this.currentID = item.id;
+          let res = await this.getListDetail(item.id)
+          this.currentID = item.id
           this.$router.push({
             path: '/playlist/detail',
             query: { id: item.id },
-          });
+          })
         } catch (err) {
-          alert('请求服务器错误');
+          alert('请求服务器错误')
         } finally {
-          this.setLoad(false);
+          this.setLoad(false)
         }
       } else {
         this.$router.push({
           path: '/playlist/detail',
           query: { id: item.id },
-        });
+        })
       }
     },
     parseData(response) {
@@ -79,32 +79,32 @@ export default {
           id: currentValue.id,
           name: currentValue.name,
           imgUrl: currentValue.picUrl,
-        };
-        let temp = parseInt(currentValue.playCount) + '';
-        if (temp.length >= 6) {
-          obj.play = temp[0] + temp[1] + '万';
-        } else {
-          obj.play = temp;
         }
-        return obj;
-      });
+        let temp = parseInt(currentValue.playCount) + ''
+        if (temp.length >= 6) {
+          obj.play = temp[0] + temp[1] + '万'
+        } else {
+          obj.play = temp
+        }
+        return obj
+      })
       return {
         one: result.slice(0, 3),
         two: result.slice(3),
-      };
+      }
     },
   },
   async created() {
     try {
-      let response = await getRemd();
-      this.remdList = this.parseData(response);
+      let response = await getRemd()
+      this.remdList = this.parseData(response)
     } catch {
-      alert('服务器错误，请重试！');
+      alert('服务器错误，请重试！')
     } finally {
-      this.loading = false;
+      this.loading = false
     }
   },
-};
+}
 </script>
 
 <style>

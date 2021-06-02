@@ -6,6 +6,6 @@ const getter = {
   listDetail: (state) => state.listDetail,
   currentTime: (state) => state.currentTime,
   playerStatus: (state) => state.playerStatus,
-};
+}
 
-export default getter;
+export default getter

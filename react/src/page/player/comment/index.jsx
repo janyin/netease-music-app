@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './index.css';
-import like from '@/assets/like.svg';
+import React from 'react'
+import PropTypes from 'prop-types'
+import './index.css'
+import like from '@/assets/like.svg'
 
 /**
  * 歌曲热门评论组件
@@ -30,11 +30,11 @@ function Comment({ data: { username, time, avatarUrl, likedCount, content } }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 Comment.propTypes = {
   data: PropTypes.object.isRequired,
-};
+}
 
-export default Comment;
+export default Comment

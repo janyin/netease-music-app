@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import Song from '@/components/song.vue';
-import { getRank } from '@/api/getData';
+import Song from '@/components/song.vue'
+import { getRank } from '@/api/getData'
 
 export default {
   data() {
@@ -29,30 +29,30 @@ export default {
       loading: true,
       error: false,
       rank: [],
-    };
+    }
   },
   components: {
     Song,
   },
   computed: {
     getTime() {
-      let d = new Date();
-      let month = d.getMonth();
-      let day = d.getDate();
-      return `${month + 1}月${day}日`;
+      let d = new Date()
+      let month = d.getMonth()
+      let day = d.getDate()
+      return `${month + 1}月${day}日`
     },
   },
   methods: {
     parseData(response) {
-      let song = response.data.playlist.tracks.slice(0, 20);
+      let song = response.data.playlist.tracks.slice(0, 20)
 
       let rankListData = song.map(function (currentValue, index) {
-        let artistsName = '';
+        let artistsName = ''
         if (currentValue.ar.length >= 2) {
           //最多两个歌手名称
-          artistsName = currentValue.ar[0].name + '/' + currentValue.ar[1].name;
+          artistsName = currentValue.ar[0].name + '/' + currentValue.ar[1].name
         } else {
-          artistsName = currentValue.ar[0].name;
+          artistsName = currentValue.ar[0].name
         }
         let obj = {
           id: currentValue.id,
@@ -61,32 +61,32 @@ export default {
           artists: artistsName,
           album: currentValue.al.name,
           rank: index + 1,
-        };
+        }
         if (index <= 2) {
           //前三歌曲加粗
-          obj.color = true;
+          obj.color = true
         }
         if (index <= 8) {
           //前9歌曲序号加0
-          obj.rank = '0' + obj.rank;
+          obj.rank = '0' + obj.rank
         }
-        return obj;
-      });
+        return obj
+      })
 
-      return rankListData;
+      return rankListData
     },
   },
   async created() {
     try {
-      let response = await getRank();
-      this.rank = this.parseData(response);
+      let response = await getRank()
+      this.rank = this.parseData(response)
     } catch {
-      this.error = true;
+      this.error = true
     } finally {
-      this.loading = false;
+      this.loading = false
     }
   },
-};
+}
 </script>
 
 <style scoped>

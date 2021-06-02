@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import { getSearchSong, getWord } from '@/api/getData';
-import { XInput } from 'vux';
-import Trending from '@/components/searchTab/trending.vue';
-import Song from '@/components/song.vue';
+import { getSearchSong, getWord } from '@/api/getData'
+import { XInput } from 'vux'
+import Trending from '@/components/searchTab/trending.vue'
+import Song from '@/components/song.vue'
 
 export default {
   data() {
@@ -45,7 +45,7 @@ export default {
       error: false,
       searchResult: [],
       hotWord: [],
-    };
+    }
   },
   components: {
     XInput,
@@ -54,29 +54,29 @@ export default {
   },
   methods: {
     async search(data) {
-      this.isWord = false;
+      this.isWord = false
       try {
-        let res = await this.getSearchResult(data);
-        this.searchResult = res;
-        this.searchText = data;
-        this.loading = false;
+        let res = await this.getSearchResult(data)
+        this.searchResult = res
+        this.searchText = data
+        this.loading = false
       } catch (error) {
-        this.searchText = data;
-        this.error = true;
+        this.searchText = data
+        this.error = true
       }
     },
     async getSearchResult(data) {
-      const word = data.trim();
-      let response = await getSearchSong(word);
-      let song = response.data.result.songs;
+      const word = data.trim()
+      let response = await getSearchSong(word)
+      let song = response.data.result.songs
 
       let searchResultList = song.map(function (currentValue) {
-        let artistsName = '';
+        let artistsName = ''
         if (currentValue.artists.length >= 2) {
           artistsName =
-            currentValue.artists[0].name + '/' + currentValue.artists[1].name;
+            currentValue.artists[0].name + '/' + currentValue.artists[1].name
         } else {
-          artistsName = currentValue.artists[0].name;
+          artistsName = currentValue.artists[0].name
         }
         let obj = {
           id: currentValue.id,
@@ -84,27 +84,27 @@ export default {
           alias: currentValue.alias[0],
           artists: artistsName,
           album: currentValue.album.name,
-        };
-        return obj;
-      });
+        }
+        return obj
+      })
 
-      return searchResultList;
+      return searchResultList
     },
     clear() {
-      this.isWord = true;
+      this.isWord = true
     },
     change(value) {
       if (value === '') {
-        this.isWord = true;
+        this.isWord = true
       }
     },
   },
   async created() {
-    let response = await getWord();
-    this.hotWord = response.data.result.hots;
-    this.isWord = true;
+    let response = await getWord()
+    this.hotWord = response.data.result.hots
+    this.isWord = true
   },
-};
+}
 </script>
 
 <style scoped>

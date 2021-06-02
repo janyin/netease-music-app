@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import { getNewSong } from '@/api/getData';
-import RecommendList from '@/components/indexTab/recommendList.vue';
-import Song from '@/components/song.vue';
-import Footer from '@/components/indexTab/footer.vue';
+import { getNewSong } from '@/api/getData'
+import RecommendList from '@/components/indexTab/recommendList.vue'
+import Song from '@/components/song.vue'
+import Footer from '@/components/indexTab/footer.vue'
 
 export default {
   data() {
@@ -31,7 +31,7 @@ export default {
       loading: true,
       data: [],
       error: false,
-    };
+    }
   },
   components: {
     RecommendList,
@@ -41,15 +41,15 @@ export default {
   methods: {
     parseData(response) {
       let result = response.data.result.map(function (currentValue) {
-        let artistsName = '';
+        let artistsName = ''
 
         if (currentValue.song.artists.length >= 2) {
           artistsName =
             currentValue.song.artists[0].name +
             '/' +
-            currentValue.song.artists[1].name;
+            currentValue.song.artists[1].name
         } else {
-          artistsName = currentValue.song.artists[0].name;
+          artistsName = currentValue.song.artists[0].name
         }
 
         let obj = {
@@ -57,24 +57,24 @@ export default {
           title: currentValue.name,
           artists: artistsName,
           album: currentValue.song.album.name,
-        };
-        return obj;
-      });
+        }
+        return obj
+      })
 
-      return result;
+      return result
     },
   },
   async created() {
     try {
-      let response = await getNewSong();
-      this.data = this.parseData(response);
+      let response = await getNewSong()
+      this.data = this.parseData(response)
     } catch (err) {
-      this.error = true;
+      this.error = true
     } finally {
-      this.loading = false;
+      this.loading = false
     }
   },
-};
+}
 </script>
 
 <style scoped>

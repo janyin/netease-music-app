@@ -4,9 +4,9 @@
  * @returns 返回评论的时间
  */
 function parseCommentDate(time) {
-  const date = new Date(time);
-  const year = date.getFullYear() === 2020 ? '' : `${date.getFullYear()}年`;
-  return `${year}${date.getMonth() + 1}月${date.getDate()}日`;
+  const date = new Date(time)
+  const year = date.getFullYear() === 2020 ? '' : `${date.getFullYear()}年`
+  return `${year}${date.getMonth() + 1}月${date.getDate()}日`
 }
 
 /**
@@ -16,15 +16,15 @@ function parseCommentDate(time) {
  */
 function getArtists(artists) {
   if (artists.length >= 2) {
-    return `${artists[0].name}/${artists[1].name}`;
+    return `${artists[0].name}/${artists[1].name}`
   }
-  return artists[0].name;
+  return artists[0].name
 }
 
 /**
  * 新歌推荐数据
- * @param {*} response 
- * @returns 
+ * @param {*} response
+ * @returns
  */
 export const newSong = (response) => {
   return response.result.map(({ song: { artists, album }, id, name }) => ({
@@ -32,21 +32,21 @@ export const newSong = (response) => {
     title: name,
     artists: getArtists(artists),
     album: album.name,
-  }));
+  }))
 }
-  
+
 /**
  * 排行榜页面数据
- * @param {*} response 
- * @returns 
+ * @param {*} response
+ * @returns
  */
 export const rank = (response) => {
   return response.playlist.tracks
     .slice(0, 20)
     .map(({ ar, id, name, alia, al }, index) => {
-      let color = false;
+      let color = false
       // 前三歌曲加粗
-      if (index <= 2) color = true;
+      if (index <= 2) color = true
 
       // 前9歌曲序号加0
       if (index <= 8) {
@@ -58,7 +58,7 @@ export const rank = (response) => {
           album: al.name,
           rank: `0${index + 1}`,
           color,
-        };
+        }
       }
 
       return {
@@ -69,20 +69,20 @@ export const rank = (response) => {
         album: al.name,
         rank: index + 1,
         color,
-      };
-    });
+      }
+    })
 }
 /**
  * 推荐歌单列表
- * @param {*} response 
- * @returns 
+ * @param {*} response
+ * @returns
  */
 export const remd = (response) => {
   return response.result.slice(0, 6).map(({ id, name, picUrl, playCount }) => {
-    let play = playCount.toString();
+    let play = playCount.toString()
 
     if (play.length >= 6) {
-      play = `${play[0] + play[1]}万`;
+      play = `${play[0] + play[1]}万`
     }
 
     return {
@@ -90,25 +90,25 @@ export const remd = (response) => {
       name,
       imgUrl: picUrl,
       play,
-    };
-  });
+    }
+  })
 }
 /**
  * 歌单详情页
- * @param {*} response 
- * @returns 
+ * @param {*} response
+ * @returns
  */
 export const playList = (response) => {
   const playListSong = response.playlist.tracks
     .slice(0, 25)
     .map((value, index) => {
-      let artistsName = '';
-      const { ar, id, name, alia, al } = value;
+      let artistsName = ''
+      const { ar, id, name, alia, al } = value
 
       if (ar.length >= 2) {
-        artistsName = `${ar[0].name}/${ar[1].name}`;
+        artistsName = `${ar[0].name}/${ar[1].name}`
       } else {
-        artistsName = ar[0].name;
+        artistsName = ar[0].name
       }
 
       return {
@@ -118,10 +118,10 @@ export const playList = (response) => {
         artists: artistsName,
         album: al.name,
         rank: index + 1,
-      };
-    });
+      }
+    })
 
-  const { id, tags, description, name, coverImgUrl } = response.playlist;
+  const { id, tags, description, name, coverImgUrl } = response.playlist
 
   return {
     id,
@@ -130,11 +130,11 @@ export const playList = (response) => {
     music: playListSong,
     name,
     imgUrl: coverImgUrl,
-  };
-};
+  }
+}
 /**
  * 搜索结果
- * @param {*} response 
+ * @param {*} response
  */
 export const search = (response) => {
   return response.result.songs.map(({ artists, id, name, alias, album }) => ({
@@ -143,19 +143,21 @@ export const search = (response) => {
     alias: alias[0],
     artists: getArtists(artists),
     album: album.name,
-  }));
+  }))
 }
 /**
  * 歌曲评论
- * @param {*} data 
- * @returns 
+ * @param {*} data
+ * @returns
  */
 export const comment = (data) => {
-  return data.map(({ content, likedCount, user: { nickname, avatarUrl }, time }) => ({
-    content,
-    likedCount,
-    username: nickname,
-    avatarUrl,
-    time: parseCommentDate(time),
-  }));
+  return data.map(
+    ({ content, likedCount, user: { nickname, avatarUrl }, time }) => ({
+      content,
+      likedCount,
+      username: nickname,
+      avatarUrl,
+      time: parseCommentDate(time),
+    }),
+  )
 }

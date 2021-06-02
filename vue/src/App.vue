@@ -16,15 +16,15 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
-import { Loading, Toast } from 'vux';
-import MiniPlayer from '@/components/miniPlayer.vue';
+import { mapGetters, mapMutations } from 'vuex'
+import { Loading, Toast } from 'vux'
+import MiniPlayer from '@/components/miniPlayer.vue'
 
 export default {
   data() {
     return {
       loadText: '加载中',
-    };
+    }
   },
   computed: {
     ...mapGetters(['isLoad', 'isMiniPlayer', 'isToast']),
@@ -32,7 +32,7 @@ export default {
   methods: {
     ...mapMutations(['setToast']),
     totast() {
-      this.setToast(false);
+      this.setToast(false)
     },
   },
   components: {
@@ -40,7 +40,7 @@ export default {
     Loading,
     Toast,
   },
-};
+}
 </script>
 
 <style>

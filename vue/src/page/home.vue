@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Header from '@/components/header.vue';
-import IndexTab from '@/components/indexTab/index.vue';
-import RankTab from '@/components/rankTab/index.vue';
-import SearchTab from '@/components/searchTab/index.vue';
+import Header from '@/components/header.vue'
+import IndexTab from '@/components/indexTab/index.vue'
+import RankTab from '@/components/rankTab/index.vue'
+import SearchTab from '@/components/searchTab/index.vue'
 
 export default {
   data: () => ({
@@ -23,5 +23,5 @@ export default {
     RankTab,
     SearchTab,
   },
-};
+}
 </script>

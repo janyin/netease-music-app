@@ -1,30 +1,30 @@
-import Song from '@/components/song/';
-import { getPlaylist } from '@/store/action';
-import { Toast } from 'antd-mobile';
-import React from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import Footer from './footer';
-import styles from './index.module.css';
-import RemdList from './remdlist';
+import Song from '@/components/song/'
+import { getPlaylist } from '@/store/action'
+import { Toast } from 'antd-mobile'
+import React from 'react'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import Footer from './footer'
+import styles from './index.module.css'
+import RemdList from './remdlist'
 
 /**
  * 首页
  * @author janyin
  */
 function Home({ playList, getPlaylist, remd, newSong }) {
-  const history = useHistory();
+  const history = useHistory()
   /**
    * 跳转到歌单详情页面
    * @param {Number} id 歌单ID
    */
   async function gotoPlayList(id) {
     if (!playList.id || id !== playList.id) {
-      Toast.loading('正在加载数据...', 100);
-      await getPlaylist(id);
-      Toast.hide();
+      Toast.loading('正在加载数据...', 100)
+      await getPlaylist(id)
+      Toast.hide()
     }
-    history.push('/playlist');
+    history.push('/playlist')
   }
 
   return (
@@ -56,7 +56,7 @@ function Home({ playList, getPlaylist, remd, newSong }) {
       </section>
       <Footer />
     </div>
-  );
+  )
 }
 
 export default connect(
@@ -66,4 +66,4 @@ export default connect(
     playList: state.playList,
   }),
   { getPlaylist },
-)(Home);
+)(Home)

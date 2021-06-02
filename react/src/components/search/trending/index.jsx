@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './index.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styles from './index.module.css'
 
 /**
  * 搜索热词
@@ -22,11 +22,11 @@ function Trending({ hotWord, searchWord }) {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 Trending.propTypes = {
   hotWord: PropTypes.array.isRequired,
-};
+}
 
-export default Trending;
+export default Trending

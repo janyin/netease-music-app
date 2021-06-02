@@ -1,14 +1,14 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store/index';
-import global from './utils/global';
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store/index'
+import global from './utils/global'
 
-Vue.config.productionTip = false;
-Vue.use(global);
+Vue.config.productionTip = false
+Vue.use(global)
 
 new Vue({
   router,
   store,
   render: (h) => h(App),
-}).$mount('#app');
+}).$mount('#app')

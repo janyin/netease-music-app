@@ -1,9 +1,9 @@
-import React from 'react';
-import { SearchBar, Toast } from 'antd-mobile';
-import Song from '@/components/song/';
-import { connect } from 'react-redux';
-import { getSearchSong, clearSearchSong, setCurWord } from '@/store/action';
-import Trending from './trending';
+import React from 'react'
+import { SearchBar, Toast } from 'antd-mobile'
+import Song from '@/components/song/'
+import { connect } from 'react-redux'
+import { getSearchSong, clearSearchSong, setCurWord } from '@/store/action'
+import Trending from './trending'
 
 /**
  * 搜索页面
@@ -22,12 +22,12 @@ function Search({
    * @param {String} val 搜索词
    */
   async function searchWord(val) {
-    Toast.loading('正在加载数据...', 100);
+    Toast.loading('正在加载数据...', 100)
     if (!curWord) {
-      setCurWord(val);
+      setCurWord(val)
     }
-    await getSearchSong();
-    Toast.hide();
+    await getSearchSong()
+    Toast.hide()
   }
 
   /**
@@ -36,9 +36,9 @@ function Search({
    */
   function handleChange(val) {
     if (!val.trim()) {
-      clearSearchSong();
+      clearSearchSong()
     } else {
-      setCurWord(val);
+      setCurWord(val)
     }
   }
   return (
@@ -59,7 +59,7 @@ function Search({
         <Song data={value} key={value.id} />
       ))}
     </div>
-  );
+  )
 }
 
 export default connect(
@@ -69,4 +69,4 @@ export default connect(
     curWord: state.curWord,
   }),
   { getSearchSong, clearSearchSong, setCurWord },
-)(Search);
+)(Search)

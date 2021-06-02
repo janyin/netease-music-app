@@ -51,11 +51,11 @@
 </template>
 
 <script>
-import { XButton } from 'vux';
-import BScroll from 'better-scroll';
-import { mapMutations, mapGetters } from 'vuex';
-import { getComment } from '@/api/getData';
-import Comment from '@/components/comment.vue';
+import { XButton } from 'vux'
+import BScroll from 'better-scroll'
+import { mapMutations, mapGetters } from 'vuex'
+import { getComment } from '@/api/getData'
+import Comment from '@/components/comment.vue'
 
 export default {
   data() {
@@ -64,43 +64,43 @@ export default {
       comment: [],
       isComment: false,
       commentId: 0,
-    };
+    }
   },
   computed: {
     ...mapGetters(['currentMusic', 'currentTime', 'playerStatus']),
     activeIndex() {
       return this.currentMusic.lyric.findIndex((item, index, array) => {
-        let nextLyric = array[index + 1];
+        let nextLyric = array[index + 1]
 
         if (
           item.time <= this.currentTime &&
           (nextLyric ? this.currentTime < nextLyric.time : true)
         ) {
-          return index;
+          return index
         }
-      });
+      })
     },
     bgStyle() {
       return {
         backgroundImage: `url(${this.currentMusic.imgUrl})`,
-      };
+      }
     },
   },
   methods: {
     ...mapMutations(['changePlayerStatus', 'setMiniPlayer']),
     goBack() {
-      this.setMiniPlayer(true);
-      this.isComment = false;
-      this.$router.back();
+      this.setMiniPlayer(true)
+      this.isComment = false
+      this.$router.back()
     },
     async gotoComment() {
       if (this.commentId == this.currentMusic.id) {
-        this.isComment = true;
+        this.isComment = true
       } else {
-        let result = await getComment(this.currentMusic.id);
-        this.commentId = this.currentMusic.id;
-        this.parseComment(result.data.hotComments);
-        this.isComment = true;
+        let result = await getComment(this.currentMusic.id)
+        this.commentId = this.currentMusic.id
+        this.parseComment(result.data.hotComments)
+        this.isComment = true
       }
     },
     parseComment(data, id) {
@@ -111,36 +111,36 @@ export default {
           username: item.user.nickname,
           avatarUrl: item.user.avatarUrl,
           time: this.parseCommentDate(item.time),
-        };
-      });
+        }
+      })
     },
     parseCommentDate(time) {
-      let date = new Date(Number(time));
-      let year = date.getFullYear() == 2020 ? '' : `${date.getFullYear()}年`;
-      return `${year}${date.getMonth() + 1}月${date.getDate()}日`;
+      let date = new Date(Number(time))
+      let year = date.getFullYear() == 2020 ? '' : `${date.getFullYear()}年`
+      return `${year}${date.getMonth() + 1}月${date.getDate()}日`
     },
   },
   watch: {
     activeIndex(newIndex) {
-      let lrc_item = this.$refs.lrc_item;
-      this.scroll.scrollToElement(lrc_item[newIndex], 200, 0, true);
+      let lrc_item = this.$refs.lrc_item
+      this.scroll.scrollToElement(lrc_item[newIndex], 200, 0, true)
     },
   },
   activated() {
     if (!this.scroll) {
-      this.scroll = new BScroll(this.$refs.lrc);
+      this.scroll = new BScroll(this.$refs.lrc)
     } else {
-      this.scroll.refresh();
+      this.scroll.refresh()
     }
     if (this.commentId == this.currentMusic.id) {
-      this.isComment = true;
+      this.isComment = true
     }
   },
   components: {
     XButton,
     Comment,
   },
-};
+}
 </script>
 
 <style scoped>

@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
+Vue.use(Router)
 
-const home = () => import('@/page/home');
-const playList = () => import('@/page/playList');
-const player = () => import('@/page/player');
+const home = () => import('@/page/home')
+const playList = () => import('@/page/playList')
+const player = () => import('@/page/player')
 
 export default new Router({
   routes: [
@@ -22,4 +22,4 @@ export default new Router({
       component: player, //播放页面
     },
   ],
-});
+})

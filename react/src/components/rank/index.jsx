@@ -1,7 +1,7 @@
-import React from 'react';
-import Song from '@/components/song/';
-import { connect } from 'react-redux';
-import styles from './index.module.css';
+import React from 'react'
+import Song from '@/components/song/'
+import { connect } from 'react-redux'
+import styles from './index.module.css'
 
 /**
  * 排行榜页面
@@ -12,8 +12,8 @@ import styles from './index.module.css';
  * 获取当前时间
  */
 function getTime() {
-  const d = new Date();
-  return `${d.getMonth() + 1}月${d.getDate()}日`;
+  const d = new Date()
+  return `${d.getMonth() + 1}月${d.getDate()}日`
 }
 
 function Rank({ rank }) {
@@ -34,9 +34,9 @@ function Rank({ rank }) {
         ))}
       </section>
     </div>
-  );
+  )
 }
 
 export default connect((state) => ({
   rank: state.rank,
-}))(Rank);
+}))(Rank)

@@ -1,14 +1,14 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import styles from './index.module.css';
+import React from 'react'
+import { useHistory } from 'react-router-dom'
+import styles from './index.module.css'
 
 /**
  * 单个歌曲展示组件
  * @author janyin
  */
 function Song({ data }) {
-  const { title, alias, artists, album, rank = false, color = false } = data;
-  const history = useHistory();
+  const { title, alias, artists, album, rank = false, color = false } = data
+  const history = useHistory()
 
   return (
     <div
@@ -36,7 +36,7 @@ function Song({ data }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Song;
+export default Song

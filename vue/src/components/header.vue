@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { Tab, TabItem } from 'vux';
+import { Tab, TabItem } from 'vux'
 
 export default {
   components: {
@@ -29,10 +29,10 @@ export default {
   },
   methods: {
     setTab(val) {
-      this.$parent.tabName = val;
+      this.$parent.tabName = val
     },
   },
-};
+}
 </script>
 
 <style scoped>

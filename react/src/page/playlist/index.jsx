@@ -1,8 +1,8 @@
-import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import Song from '@/components/song/';
-import { connect } from 'react-redux';
-import styles from './index.module.css';
+import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import Song from '@/components/song/'
+import { connect } from 'react-redux'
+import styles from './index.module.css'
 
 /**
  * 歌单详情页面
@@ -56,9 +56,9 @@ function PlayList({
         {music && music.map((value) => <Song data={value} key={value.id} />)}
       </div>
     </div>
-  );
+  )
 }
 
 export default connect((state) => ({
   playList: state.playList,
-}))(PlayList);
+}))(PlayList)

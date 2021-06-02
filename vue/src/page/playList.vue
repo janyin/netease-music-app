@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import Song from '@/components/song.vue';
+import { mapGetters } from 'vuex'
+import Song from '@/components/song.vue'
 
 export default {
   components: {
@@ -51,15 +51,15 @@ export default {
     bgStyle() {
       return {
         backgroundImage: `url(${this.listDetail.imgUrl})`,
-      };
+      }
     },
   },
   methods: {
     goBack() {
-      this.$router.back();
+      this.$router.back()
     },
   },
-};
+}
 </script>
 
 <style scoped>

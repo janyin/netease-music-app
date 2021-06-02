@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
   props: {
@@ -36,22 +36,22 @@ export default {
     ...mapActions(['getMusicData']),
     ...mapMutations(['setLoad', 'setToast', 'setMiniPlayer']),
     async playMusic(music) {
-      this.setLoad(true);
+      this.setLoad(true)
       try {
-        let res = await this.getMusicData(music);
-        this.$store.state.playerStatus = true;
-        this.setMiniPlayer(false);
+        let res = await this.getMusicData(music)
+        this.$store.state.playerStatus = true
+        this.setMiniPlayer(false)
         this.$router.push({
           path: '/player',
-        });
+        })
       } catch (err) {
-        this.setToast(true);
+        this.setToast(true)
       } finally {
-        this.setLoad(false);
+        this.setLoad(false)
       }
     },
   },
-};
+}
 </script>
 
 <style scoped>
