@@ -14,7 +14,7 @@ function Footer() {
           <div
             className="openapp"
             onClick={() =>
-              window.open('https://github.com/janyin/react-music-app')
+              window.open('https://github.com/janyin/netease-music-app')
             }
           >
             如果喜欢可以给个star--&gt;GitHub

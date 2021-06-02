@@ -1,10 +1,10 @@
-import { setCurMusic, setPlayerStatus } from '@/store/action';
-import { Toast } from 'antd-mobile';
-import React, { useEffect } from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { connect } from 'react-redux';
-import Comment from './comment';
-import './index.css';
+import { setCurMusic, setPlayerStatus } from '@/store/action'
+import { Toast } from 'antd-mobile'
+import React, { useEffect } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { connect } from 'react-redux'
+import Comment from './comment'
+import './index.css'
 
 /**
  * 播放页面
@@ -18,15 +18,15 @@ function Player(props) {
     setPlayerStatus,
     history,
     location: { query: data },
-  } = props;
-  const player = React.createRef();
+  } = props
+  const player = React.createRef()
 
   /**
    *回到上一页面
    */
   function goBack() {
-    setPlayerStatus(false);
-    history.goBack();
+    setPlayerStatus(false)
+    history.goBack()
   }
 
   /**
@@ -34,40 +34,51 @@ function Player(props) {
    */
   function disableMusic() {
     Toast.fail('该音乐无法播放', 2, () => {
-      goBack();
-    });
+      goBack()
+    })
   }
   /**
    * 改变播放状态，点暂停的时候
    */
   function changeStatus() {
     if (playerStatus) {
-      player.current.pause();
+      player.current.pause()
     } else {
-      player.current.play();
+      player.current.play()
     }
-    setPlayerStatus(!playerStatus);
+    setPlayerStatus(!playerStatus)
   }
 
   // eslint-disable-next-line
   useEffect(() => {
     async function getMusicData() {
-      Toast.loading('正在加载数据...', 100);
-      const res = await setCurMusic(data);
-      Toast.hide();
+      Toast.loading('正在加载数据...', 100)
+      const res = await setCurMusic(data)
+      Toast.hide()
       if (res === 'DISABLEMUSIC') {
-        disableMusic();
+        disableMusic()
       } else {
-        setPlayerStatus(true);
+        setPlayerStatus(true)
       }
     }
-    getMusicData();
+    getMusicData()
     // eslint-disable-next-line
-  }, [data]);
+  }, [data])
+
+  function getMusicUrl() {
+    if (!musicUrl) {
+      return ''
+    }
+    if (musicUrl.includes('https')) {
+      return musicUrl
+    }
+
+    return musicUrl.replace(/http:/, 'https:')
+  }
 
   return (
     <div>
-      <audio src={musicUrl} loop autoPlay ref={player}>
+      <audio src={getMusicUrl()} loop autoPlay ref={player}>
         你的浏览器暂时不支持H5播放
       </audio>
       <div className="song_bg" style={{ backgroundImage: `url(${imgUrl})` }} />
@@ -103,7 +114,7 @@ function Player(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default connect(
@@ -115,4 +126,4 @@ export default connect(
     setCurMusic,
     setPlayerStatus,
   },
-)(Player);
+)(Player)

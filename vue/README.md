@@ -2,6 +2,8 @@
 
 ## 🍓 预览
 
+https://vue-music-app-navy.vercel.app/#/
+
 ## 😯 技术
 
 - 构建工具：Vue cli3

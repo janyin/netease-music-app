@@ -67,7 +67,12 @@ export const PlayerProvider = ({ children }) => {
         <>
           {children}
           {musicInfo && (
-            <audio src={musicInfo.musicUrl} loop autoPlay ref={audioRef}>
+            <audio
+              src={musicInfo?.musicUrl?.replace(/http:/, 'https:')}
+              loop
+              autoPlay
+              ref={audioRef}
+            >
               你的浏览器暂时不支持H5播放
             </audio>
           )}

@@ -6,9 +6,9 @@
 
 ## 🍓 预览
 
-- React：
+- React：https://netease-music-app-nine.vercel.app/#/
 - Next：https://netease-music-app.vercel.app/
-- Vue：
+- Vue：https://vue-music-app-navy.vercel.app/#/
 
 ## 😯 技术
 
