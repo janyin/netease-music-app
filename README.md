@@ -12,9 +12,9 @@
 
 ## 😯Tech 技术
 
-- [React][3] : Creact-react-app/Redux/React-Router/Antd-mobile
-- [Next][4] : Material-UI/SWR/React Hooks
-- [Vue][2] : Vuex/Vux/Vue Router/better-scroll
+- [React][3] : creact-react-app/redux/react router/antd-mobile
+- [Next][4] : material-ui/swr/react hooks
+- [Vue][2] : vuex/vux/vue router/better-scroll
 
 ## 🏃Install 运行
 
