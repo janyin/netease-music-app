@@ -15,9 +15,9 @@
 1、clone
 
 ```git
-git clone https://github.com.cnpmjs.org/janyin/vue-music-app.git
+git clone https://github.com/janyin/netease-music-app
 
-cd vue-music-app
+cd netease-music-app
 ```
 
 2、安装依赖

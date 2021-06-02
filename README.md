@@ -1,20 +1,20 @@
 # 🎵 仿网易云音乐移动端网页【React/Next/Vue 实现】
 
-功能页面都比较简单，但是常见需求（搜索、列表、页面跳转）都有
+功能页面都比较简单，但是常见需求都有(搜索、列表、页面跳转、数据状态管理)
 <br />
 适合拿来练手的入门级前端 Demo
 
 ## 🍓 预览
 
 - React：
-- Next：
+- Next：https://netease-music-app.vercel.app/
 - Vue：
 
 ## 😯 技术
 
-- React：
-- Next：
-- Vue：
+- [React][3]
+- [Next][4]
+- [Vue][2]
 
 ## 🏃 运行
 
@@ -23,9 +23,9 @@
 1、clone
 
 ```git
-git clone https://github.com.cnpmjs.org/janyin/vue-music-app.git
+git clone https://github.com/janyin/netease-music-app
 
-cd vue-music-app
+cd netease-music-app
 ```
 
 2、安装依赖
@@ -68,3 +68,6 @@ yarn build
   ...
 
 [1]: https://binaryify.github.io/NeteaseCloudMusicApi
+[2]: https://github.com/janyin/netease-music-app/blob/master/vue/README.md
+[3]: https://github.com/janyin/netease-music-app/blob/master/react/README.md
+[4]: https://github.com/janyin/netease-music-app/blob/master/next/README.md

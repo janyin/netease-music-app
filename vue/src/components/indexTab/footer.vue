@@ -16,10 +16,10 @@
 export default {
   methods: {
     gotoGithub() {
-      window.open('https://github.com/janyin/vue-music-app');
+      window.open('https://github.com/janyin/netease-music-app')
     },
   },
-};
+}
 </script>
 
 <style scoped>

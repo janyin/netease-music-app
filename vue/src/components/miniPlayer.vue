@@ -21,7 +21,7 @@
       </div>
     </div>
     <audio
-      :src="currentMusic.url"
+      :src="getMusicUrl"
       loop
       autoplay
       @timeupdate="timeupdate"
@@ -33,48 +33,58 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
-import { XProgress } from 'vux';
+import { mapGetters, mapMutations } from 'vuex'
+import { XProgress } from 'vux'
 
 export default {
   data() {
     return {
       duration: 0,
-    };
+    }
   },
   computed: {
     ...mapGetters(['currentMusic', 'currentTime', 'playerStatus']),
     percent() {
-      return Number(((this.currentTime / this.duration) * 100).toFixed(2));
+      return Number(((this.currentTime / this.duration) * 100).toFixed(2))
+    },
+    getMusicUrl() {
+      if (!this.currentMusic.url) {
+        return ''
+      }
+      if (this.currentMusic.url.includes('https')) {
+        return this.currentMusic.url
+      }
+
+      return this.currentMusic.url.replace(/http:/, 'https:')
     },
   },
   methods: {
     ...mapMutations(['setCurrentTime', 'changePlayerStatus', 'setMiniPlayer']),
     timeupdate(e) {
-      this.duration = e.target.duration;
-      this.setCurrentTime(e.target.currentTime);
+      this.duration = e.target.duration
+      this.setCurrentTime(e.target.currentTime)
     },
     gotoPlayerPage() {
-      this.setMiniPlayer(false);
+      this.setMiniPlayer(false)
       this.$router.push({
         path: '/player',
-      });
+      })
     },
   },
   watch: {
     playerStatus(status) {
-      let audio = this.$refs.player;
+      let audio = this.$refs.player
       if (status) {
-        audio.play();
+        audio.play()
       } else {
-        audio.pause();
+        audio.pause()
       }
     },
   },
   components: {
     XProgress,
   },
-};
+}
 </script>
 
 <style scoped>
