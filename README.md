@@ -1,22 +1,22 @@
-# 🎵 仿网易云音乐移动端网页【React/Next/Vue 实现】
+# 🎵 仿网易云音乐移动端【React/Next/Vue 实现】
 
 功能页面都比较简单，但是常见需求都有(搜索、列表、页面跳转、数据状态管理)
 <br />
 适合拿来练手的入门级前端 Demo
 
-## 🍓 预览
+## 🍓Preview 预览
 
 - React：https://netease-music-app-nine.vercel.app
 - Next：https://netease-music-app.vercel.app
 - Vue：https://vue-music-app-navy.vercel.app
 
-## 😯 技术
+## 😯Tech 技术
 
-- [React][3]
-- [Next][4]
-- [Vue][2]
+- [React][3] : Creact-react-app/Redux/React-Router/Antd-mobile
+- [Next][4] : Material-UI/SWR/React Hooks
+- [Vue][2] : Vuex/Vux/Vue Router/better-scroll
 
-## 🏃 运行
+## 🏃Install 运行
 
 以 next 框架为例
 
@@ -48,7 +48,7 @@ yarn dev
 yarn build
 ```
 
-## ⬆️ 功能
+## ⬆️Features 功能
 
 - 推荐歌单
 - 歌单详情
@@ -56,11 +56,11 @@ yarn build
 - 歌词滚动播放
 - 歌曲排行榜
 
-## 💁 网易云音乐 API
+## 💁 API
 
 [API 来源][1]
 
-## 🉑️ 未来
+## 🉑️ Future 未来
 
 - TypeScript/Angular 版本
 - 登录/登出
