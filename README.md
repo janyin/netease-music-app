@@ -23,7 +23,7 @@
 1、clone
 
 ```git
-git clone https://github.com/janyin/netease-music-app
+git clone https://github.com.cnpmjs.org/janyin/netease-music-app
 
 cd netease-music-app
 ```
