@@ -12,7 +12,7 @@ import Search from '../components/search'
 import {
   NewSongResponse,
   NewSongResult,
-  RankResult,
+  RankResponse,
   RemdResponse,
   RemdResult,
 } from '../types/index'
@@ -27,7 +27,7 @@ type TabPanelProps = {
 type AppLayOutProps = {
   newSong: NewSongResult
   remd: RemdResult
-  rank: RankResult
+  rank: RankResponse
   hotWord: { first: string }[]
 }
 

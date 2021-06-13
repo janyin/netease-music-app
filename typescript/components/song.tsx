@@ -7,10 +7,10 @@ import * as PARSE from '../utils/index'
 interface Props {
   data: {
     title: string
-    alias: string
+    alias?: string
     artists: string
     album: string
-    rank?: boolean
+    rank?: string | number
     color?: boolean
     id: string
   }

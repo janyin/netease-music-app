@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import * as API from '../../apis/config'
 import Song from '../../components/song'
-import { PlayListResponese } from '../../types/index'
+import { PlayListResponese, RemdResponse } from '../../types/index'
 import * as PARSE from '../../utils/index'
 
 interface Props {
@@ -206,7 +206,7 @@ function PlayList(props: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const remdResponse = await API.getRemd()
+  const remdResponse = (await API.getRemd()) as RemdResponse
   const result = PARSE.remd(remdResponse)
   const paths = result.map((item) => ({ params: { id: `${item.id}` } }))
 
@@ -217,7 +217,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const response = await API.getPlaylist(params!.id)
+  if (!params || typeof params !== 'object') return { props: {} }
+  const response = await API.getPlaylist(params.id as number | string)
 
   return {
     props: {

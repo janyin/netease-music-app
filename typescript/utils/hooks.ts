@@ -4,7 +4,7 @@ type TimeRef = {
   current: any
 }
 
-export const useDebounce = (value: number, wait: number) => {
+export const useDebounce = (value: string, wait: number) => {
   const [debounceValue, setDebounceValue] = useState(value)
   const timeout: TimeRef = useRef()
 

@@ -1,7 +1,11 @@
+interface Props {
+  hotWord: { first: string }[]
+  clickWord: Function
+}
 /**
  * 搜索热词
  */
-function Trending({ hotWord, clickWord }) {
+function Trending({ hotWord, clickWord }: Props) {
   return (
     <>
       <div className="hot_list">

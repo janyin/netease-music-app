@@ -1,10 +1,15 @@
+import { RankResponse } from '../types/index'
 import * as PARSE from '../utils/index'
 import Song from './song'
+
+interface Props {
+  rank: RankResponse
+}
 
 /**
  * 排行榜
  */
-function Rank({ rank }) {
+function Rank({ rank }: Props) {
   const data = PARSE.rank(rank)
   return (
     <div>

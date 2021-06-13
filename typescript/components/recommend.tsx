@@ -1,10 +1,16 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
+interface Props {
+  id: string
+  name: string
+  imgUrl: string
+  play: string
+}
 /**
  * 推荐歌单
  */
-function RemdList(props) {
+function RemdList(props: Props) {
   const { id, imgUrl, play, name } = props
 
   const route = useRouter()

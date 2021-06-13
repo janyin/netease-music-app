@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
+import { useEffect } from 'react'
 import Comment from '../components/comment'
 import { ActionTypes, useDispatchPlayer, usePlayer } from '../context/music'
 
@@ -8,11 +9,16 @@ import { ActionTypes, useDispatchPlayer, usePlayer } from '../context/music'
  */
 function Player() {
   const playerInfo = usePlayer()
-  const router = useRouter()
+  const router: NextRouter = useRouter()
   const dispatch = useDispatchPlayer()
 
+  useEffect(() => {
+    if (!playerInfo || !playerInfo.musicInfo) {
+      router.back()
+    }
+  }, [playerInfo])
+
   if (!playerInfo || !playerInfo.musicInfo) {
-    router.back()
     return null
   }
 

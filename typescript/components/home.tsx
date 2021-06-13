@@ -1,11 +1,17 @@
+import { NewSongResult, RemdResult } from '../types/index'
 import Footer from './footer'
 import RemdList from './recommend'
 import Song from './song'
 
+interface Props {
+  remd: RemdResult
+  newSong: NewSongResult
+}
+
 /**
  * 首屏
  */
-function Home({ remd, newSong }) {
+function Home({ remd, newSong }: Props) {
   return (
     <div className="content">
       <h2 className="remd">推荐歌单</h2>

@@ -1,11 +1,11 @@
 import InputBase from '@material-ui/core/InputBase'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme } from '@material-ui/core/styles'
 import SearchIcon from '@material-ui/icons/Search'
 import { useState } from 'react'
 import SearchList from './searchList'
 import Trending from './trending'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   search: {
     position: 'relative',
     padding: '0 10px',
@@ -44,10 +44,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+interface Props {
+  hotWord: { first: string }[]
+}
+
 /**
  * 搜索页面
  */
-function Search({ hotWord }) {
+function Search({ hotWord }: Props) {
   const classes = useStyles()
   const [searchValue, setSearchValue] = useState('')
 
@@ -72,7 +76,7 @@ function Search({ hotWord }) {
       ) : (
         <Trending
           hotWord={hotWord}
-          clickWord={(value) => setSearchValue(value)}
+          clickWord={(value: string) => setSearchValue(value)}
         />
       )}
     </div>
