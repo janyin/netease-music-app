@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const HOST = 'https://api.mtnhao.com' /*API服务器地址*/
+const HOST = 'https://www.lghb.top' /*API服务器地址*/
 
 /**
  * 搜索热词

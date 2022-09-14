@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const HOST = 'https://api.mtnhao.com'
+const HOST = 'https://www.lghb.top'
 
 export const get = (url: string, params?: object) =>
   new Promise((resolve, reject) => {
