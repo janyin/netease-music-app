@@ -1,7 +1,7 @@
-import axios from 'axios'
 import { Toast } from 'antd-mobile'
+import axios from 'axios'
 
-const HOST = 'https://www.lghb.top'
+const HOST = 'https://music.liucodes.dev'
 
 export const get = (url, params) =>
   new Promise((resolve, reject) => {
